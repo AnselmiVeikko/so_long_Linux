@@ -21,9 +21,6 @@ SRCS = $(addsuffix .c, ${SRC})
 OBJ_DIR = obj
 OBJS = $(addprefix  ${OBJ_DIR}/, ${SRCS:.c=.o})
 
-${OBJ_DIR}/%.o: %.c | ${OBJ_DIR}
-	${CC} ${CFLAGS} -c $< -o $@ $(INCLUDES)
-
 ifeq ($(shell uname), Linux)
 	INCLUDES = -I/usr/include -Imlx
 	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
@@ -38,13 +35,14 @@ MLX_LIB = $(MLX_PATH)/libmlx.a
 LIBFT_PATH = ./libft
 LIBFT_LIB = ${LIBFT_PATH}/libft.a
 
-
-
 all: $(OBJ_DIR) $(MLX_LIB) $(LIBFT_LIB) $(NAME)
 
 $(OBJ_DIR):
 	@echo "Creating directory $(OBJ_DIR)"
 	mkdir -p $(OBJ_DIR)
+
+${OBJ_DIR}/%.o: %.c | ${OBJ_DIR}
+	${CC} ${CFLAGS} -c $< -o $@ $(INCLUDES)
 
 $(NAME): $(OBJS)
 	@echo "Linking $(NAME)"
@@ -66,6 +64,7 @@ clean:
 
 fclean: clean
 	@echo "Full clean"
+	make -C ${MLX_PATH} clean
 	make -C ${LIBFT_PATH} fclean
 	rm -rf ${NAME}
 

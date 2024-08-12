@@ -27,8 +27,7 @@ int main(void)
     free (mlx_ptr);
     return (1);
   }
-  mlx_destroy_window(mlx_ptr, win_ptr);
-  mlx_destroy_display(mlx_ptr);
+  //mlx_destroy_window(mlx_ptr, win_ptr);
   free (mlx_ptr);
   return (0);
 }
