@@ -22,14 +22,14 @@ OBJ_DIR = obj
 OBJS = $(addprefix  ${OBJ_DIR}/, ${SRCS:.c=.o})
 
 ${OBJ_DIR}/%.o: %.c | ${OBJ_DIR}
-	${CC} ${CFLAGS} -c $< -o $@ $@ $(INCLUDES)
+	${CC} ${CFLAGS} -c $< -o $@ $(INCLUDES)
 
 ifeq ($(shell uname), Linux)
 	INCLUDES = -I/usr/include -Imlx
 	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
 else
 	INCLUDES = -I/opt/X11/include -Imlx
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib /lXext /lX11 -framework openGL -framework AppKit
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework openGL -framework AppKit -arch arm64
 endif
 
 MLX_PATH  = ./mlx
@@ -40,27 +40,32 @@ LIBFT_LIB = ${LIBFT_PATH}/libft.a
 
 
 
-all: $(MLX_LIB) $(LIBFT_LIB) $(NAME)
+all: $(OBJ_DIR) $(MLX_LIB) $(LIBFT_LIB) $(NAME)
 
 $(OBJ_DIR):
+	@echo "Creating directory $(OBJ_DIR)"
 	mkdir -p $(OBJ_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+	@echo "Linking $(NAME)"
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_LIB) $(LIBFT_LIB) $(MLX_FLAGS)
 
 $(MLX_LIB):
+	@echo "Building mlx library"
 	@make -C $(MLX_PATH)
 
 $(LIBFT_LIB):
+	@echo "Building libft library"
 	@make -C $(LIBFT_PATH)
 
 clean:
+	@echo "Cleaning project"
 	make -C ${MLX_PATH} clean
 	make -C ${LIBFT_PATH} clean
 	rm -rf ${OBJ_DIR}
 
 fclean: clean
-	make -C ${MLX_PATH} fclean
+	@echo "Full clean"
 	make -C ${LIBFT_PATH} fclean
 	rm -rf ${NAME}
 
