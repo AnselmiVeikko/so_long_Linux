@@ -13,6 +13,13 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# define TILES 64
+# define PATH_W "./assets/wall.xpm"
+# define PATH_F "./assets/floor.xpm"
+# define PATH_EX "./assets/exit.xpm"
+# define PATH_P "./assets/player.xpm"
+# define PATH_C "./assets/collectible.xpm"
+
 typedef struct s_data
 {
   void  *mlx_ptr;
