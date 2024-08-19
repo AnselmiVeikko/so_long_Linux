@@ -1,10 +1,10 @@
 NAME = so_long
-CC = gcc
+CC = cc
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./lib/MLX42
 LIBFT   := ./lib/libft
 
-HEADERS	:= -I ./include -I $(LIBMLX)/include
+HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a
 SRCS	:= $(shell find ./src -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}

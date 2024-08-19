@@ -29,17 +29,17 @@ all: ${NAME}
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
 ${NAME} : ${OBJS}
-	@echo -e "${GREEN}[LIBFT]Compiling...${NC}"
+	@printf "${GREEN}[LIBFT]Compiling...${NC}\n"
 	@${CRLIB} ${NAME} ${OBJS}
-	@echo -e "${GREEN}[LIBFT]Compiled Succesfully!${NC}"
+	@printf "${GREEN}[LIBFT]Compiled Succesfully!${NC}\n"
 
 clean:
 	@rm -f ${OBJS}
-	@echo -e "${GREEN}[LIBFT]Clean Completed.${NC}"
+	@printf "${GREEN}[LIBFT]Clean Completed.${NC}\n"
 
 fclean: clean
 	@rm -f ${NAME} ${OBJS}
-	@echo -e "${GREEN}[LIBFT]Full Clean Completed.${NC}."
+	@printf "${GREEN}[LIBFT]Full Clean Completed.${NC}\n"
 
 re: fclean all
 

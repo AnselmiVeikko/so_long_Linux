@@ -13,19 +13,32 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define TILES 64
-# define PATH_W "./assets/wall.xpm"
-# define PATH_F "./assets/floor.xpm"
-# define PATH_EX "./assets/exit.xpm"
-# define PATH_P "./assets/player.xpm"
-# define PATH_C "./assets/collectible.xpm"
+# include "../lib/libft/include/libft.h"
+# include "../lib/MLX42/include/MLX42/MLX42.h"
+# include "stdlib.h"
+# include "stdarg.h"
+# include "fcntl.h"
 
-typedef struct s_data
+typedef struct s_game
 {
-  void  *mlx_ptr;
-  void  *win_ptr;
-  void  *textures[5];
-  t_map *map;
-} t_data;
-
+  mlx_t *mlx;
+  char  **map;
+  char  **mapcopy;
+  int   row;
+  int   colum;
+  int   move_x;
+  int   move_y;
+  int   player_count;
+  int   collect_count;
+  int   move_count;
+  int   exit_count;
+  int   exit_game;
+  int   locate_player_x;
+  int   locate_player_y;
+  mlx_texture_t *temp;
+  mlx_image_t *wall;
+  mlx_image_t *collect;
+  mlx_image_t *player;
+  mlx_image_t *exit;
+} t_game;
 #endif
