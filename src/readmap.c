@@ -90,14 +90,14 @@ void	find_player(t_game *game, int *player_row, int *player_col)
 void	check_map(t_game *game)
 {
 	int	i;
-	int	*player_row;
-	int	*player_col;
+	int	player_row;
+	int	player_col;
 
 	player_row = 0;
 	player_col = 0;
 
-	find_player(game, player_row, player_col);
-	fill_map(game, 0, 0);
+	find_player(game, &player_row, &player_col);
+	fill_map(game, player_row, player_col);
 	i = 0;
 	while (game->mapcopy[i])
 	{
@@ -107,15 +107,4 @@ void	check_map(t_game *game)
 			ft_printf("Row is valid, moving onto the next\n");
 		i++;
 	}
-}
-
-int	main(int argc, char *argv[])
-{
-	t_game game;
-
-	argc--;
-	read_map(argv[1], &game);
-	check_map(&game);
-	ft_printf("everything seems correct?");
-	return (0);
 }
