@@ -41,4 +41,8 @@ typedef struct s_game
   mlx_image_t *player;
   mlx_image_t *exit;
 } t_game;
+
+void  read_map(char *argv, t_game *game);
+void  fill_map(t_game *game, int move_x, int move_y);
+void  find_player(t_game *game, int *player_row, int *player_col);
 #endif

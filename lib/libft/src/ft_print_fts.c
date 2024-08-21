@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 #include "../include/libft.h"
+
 int	ft_printstr(char *str)
 {
 	int	i;
