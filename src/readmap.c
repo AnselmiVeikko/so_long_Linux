@@ -6,7 +6,7 @@
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:19:49 by ahentton          #+#    #+#             */
-/*   Updated: 2024/08/21 11:18:03 by ahentton         ###   ########.fr       */
+/*   Updated: 2024/08/23 12:43:58 by ahentton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,25 +87,25 @@ void	find_player(t_game *game, int *player_row, int *player_col)
 	}
 }
 
-void  countprops(t_game *game)
+void	countprops(t_game *game)
 {
-  int i;
-  int j;
+	int	i;
+	int	j;
 
-  i = 0;
-  while (t_game->map[i])
-  {
-    j = 0;
-    while (t_game->map[i][j])
-    {
-      if (t_game->map[i][j] == 'P')
-        game->player_count++;
-      if (t_game->map[i][j] == 'C')
-        game->collect_count++;
-      if (t_game->map[i][j] == 'E')
-        game->exit_count++;
-      j++;
-    }
-    i++;
-  }
+	i = 0;
+	while (t_game->map[i])
+	{
+		j = 0;
+		while (t_game->map[i][j])
+		{
+			if (t_game->map[i][j] == 'P')
+				game->player_count++;
+			if (t_game->map[i][j] == 'C')
+				game->collect_count++;
+			if (t_game->map[i][j] == 'E')
+				game->exit_count++;
+			j++;
+		}
+		i++;
+	}
 }
