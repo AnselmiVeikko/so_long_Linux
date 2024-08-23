@@ -13,7 +13,7 @@
 
 #include "../include/so_long.h"
 
-int  checkname(char *mapname)
+void  check_name(char *mapname)
 {
   int name_len;
 
@@ -21,55 +21,30 @@ int  checkname(char *mapname)
   if (!ft_strnstr(mapname[name_len - 4], ".ber", 5))
   {
     ft_printf("[ERROR]: Map name is invalid!");
-    return (-1);
-  }
-  return (1);
-}
-
-void  countprops(t_game *game)
-{
-  int i;
-  int j;
-
-  i = 0;
-  while (t_game->map[i])
-  {
-    j = 0;
-    while (t_game->map[i][j])
-    {
-      if (t_game->map[i][j] == 'P')
-        game->player_count++;
-      if (t_game->map[i][j] == 'C')
-        game->collect_count++;
-      if (t_game->map[i][j] == 'E')
-        game->exit_count++;
-      j++;
-    }
-    i++;
+    exit (EXIT_FAILURE);
   }
 }
 
-int checkprops(t_game *game)
+void check_props(t_game *game)
 {
   if (game->player_count != 1)
   {
     ft_printf("[MAP ERROR]: Invalid amount of player characters!\n");
-    return (-1);
+    exit (EXIT_FAILURE);
   }
   if (game->exit_count != 1)
   {
     ft_printf("[MAP ERROR]: Invalid amount of exits!\n");
-    return (-1);
+    exit (EXIT_FAILURE);
   }
   if (game->collect_count < 1)
   {
     ft_printf("[MAP ERROR]: Invalid amount of collectibles!\n");
-    return (-1);
+    exit (EXIT_FAILURE);
   }
-  return (1);
 }
 
-int  checkborders(t_game *game)
+void  check_borders(t_game *game)
 {
   int i;
   int j;
@@ -90,16 +65,15 @@ int  checkborders(t_game *game)
         if (game->map[i][j] != '1')
         {
           ft_printf("[MAP ERROR]: Invalid map, borders are not closed properly!\n");
-          return (-1)
+          exit (EXIT_FAILURE);
         }
       j++;
     }
     i++;
   }
-  return (1);
 }
 
-int  checkshape(t_game *game)
+void  check_shape(t_game *game)
 {
   int row_len;
   int i;
@@ -110,9 +84,32 @@ int  checkshape(t_game *game)
     if (row_len != ft_strlen(game->map[i]))
     {
       ft_printf("[MAP ERROR]: Map is not rectangular... seriously?\n");
-      return (-1);
+      exit (EXIT_FAILURE);
     }
     i++;
   }
-  return (1);
 }
+
+void	check_map(t_game *game)
+{
+	int	i;
+	int	player_row;
+	int	player_col;
+
+	player_row = 0;
+	player_col = 0;
+
+	find_player(game, &player_row, &player_col);
+	fill_map(game, player_row, player_col);
+	i = 0;
+	while (game->mapcopy[i])
+	{
+		if (ft_strchr(game->mapcopy[i], 'C') || ft_strchr(game->mapcopy[i], 'E'))
+			ft_printf("[ERROR]: Map is invalid!\n");
+			exit (EXIT_FAILURE);
+		else
+			ft_printf("Row is valid, moving onto the next\n");
+		i++;
+	}
+}
+

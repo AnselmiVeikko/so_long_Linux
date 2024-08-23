@@ -45,9 +45,9 @@ typedef struct s_game
 void  read_map(char *argv, t_game *game);
 void  fill_map(t_game *game, int move_x, int move_y);
 void  find_player(t_game *game, int *player_row, int *player_col);
-int   checkname(char *mapname);
-void  countprops(t_game *game);
-int   checkprops(t_game *game);
-int   checkborders(t_game *game);
-int   checkshape(t_game *game);
+void  check_name(char *mapname);
+void  count_props(t_game *game);
+void  check_props(t_game *game);
+void  check_borders(t_game *game);
+void  check_shape(t_game *game);
 #endif
