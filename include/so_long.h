@@ -50,4 +50,5 @@ void  count_props(t_game *game);
 void  check_props(t_game *game);
 void  check_borders(t_game *game);
 void  check_shape(t_game *game);
+void  check_win(t_game *game);
 #endif

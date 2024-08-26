@@ -93,16 +93,16 @@ void	countprops(t_game *game)
 	int	j;
 
 	i = 0;
-	while (t_game->map[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while (t_game->map[i][j])
+		while (game->map[i][j])
 		{
-			if (t_game->map[i][j] == 'P')
+			if (game->map[i][j] == 'P')
 				game->player_count++;
-			if (t_game->map[i][j] == 'C')
+			if (game->map[i][j] == 'C')
 				game->collect_count++;
-			if (t_game->map[i][j] == 'E')
+			if (game->map[i][j] == 'E')
 				game->exit_count++;
 			j++;
 		}

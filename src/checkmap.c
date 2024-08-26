@@ -14,10 +14,10 @@
 
 void	check_name(char *mapname)
 {
-	int	name_len;
+	size_t	name_len;
 
 	name_len = ft_strlen(mapname);
-	if (!ft_strnstr(mapname[name_len - 4], ".ber", 5))
+	if (!ft_strnstr(&mapname[name_len - 4], ".ber", 5))
 	{
 		ft_printf("[ERROR]: Map name is invalid!");
 		exit (EXIT_FAILURE);
@@ -60,7 +60,7 @@ void	check_borders(t_game *game)
 		j = 0;
 		while (game->map[i][j++])
 		{
-			if (i == 0 || i == game->row - 1 || x == 0 || x == game->colum -1)
+			if (i == 0 || i == game->row - 1 || j == 0 || j == game->colum -1)
 			{
 				if (game->map[i][j] != '1')
 				{
@@ -74,10 +74,11 @@ void	check_borders(t_game *game)
 
 void	check_shape(t_game *game)
 {
-	int	row_len;
+	size_t	row_len;
 	int	i;
 
 	row_len = ft_strlen(game->map[0]);
+	i = 0;
 	while (game->map[i])
 	{
 		if (row_len != ft_strlen(game->map[i]))
