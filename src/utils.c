@@ -20,3 +20,12 @@ void	error_exit(char *str)
 	write(1, &str, len);
 	exit (EXIT_FAILURE);
 }
+
+void	delete_textures(t_game *game, t_textures *texture)
+{
+	mlx_delete_image(game->mlx, texture->wall);
+	mlx_delete_image(game->mlx, texture->floor);
+	mlx_delete_image(game->mlx, texture->player);
+	mlx_delete_image(game->mlx, texture->collectible);
+	mlx_delete_image(game->mlx, texture->exit);
+}

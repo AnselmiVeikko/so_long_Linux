@@ -6,7 +6,7 @@
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:24:53 by ahentton          #+#    #+#             */
-/*   Updated: 2024/08/08 11:24:54 by ahentton         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:35:14 by ahentton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,47 +21,50 @@
 
 typedef struct s_game
 {
-  mlx_t *mlx;
-  char  **map;
-  char  **mapcopy;
-  int   row;
-  int   index;
-  int   move_x;
-  int   move_y;
-  int   player_count;
-  int   collect_count;
-  int   move_counter;
-  int   exit_count;
-  int   exit_game;
-  int   player_x;
-  int   player_y;
-} t_game;
+	mlx_t	*mlx;
+	char	**map;
+	char	**mapcopy;
+	int		row;
+	int		index;
+	int		move_x;
+	int		move_y;
+	int		player_count;
+	int		collect_count;
+	int		move_counter;
+	int		exit_count;
+	int		exit_game;
+	int		player_x;
+	int		player_y;
+}	t_game;
 
 typedef struct s_textures
 {
-  mlx_texture_t *temp;
-  mlx_image_t *floor;
-  mlx_image_t *wall;
-  mlx_image_t *collectible;
-  mlx_image_t *player;
-  mlx_image_t *exit;
-} t_textures;
+	mlx_texture_t	*temp;
+	mlx_image_t		*floor;
+	mlx_image_t		*wall;
+	mlx_image_t		*collectible;
+	mlx_image_t		*player;
+	mlx_image_t		*exit;
+}	t_textures;
 
-void  read_map(char *argv, t_game *game);
-void  fill_map(t_game *game, int move_x, int move_y);
-void  find_player(t_game *game, int *player_row, int *player_index);
-void  count_props(t_game *game);
+void	read_map(char *argv, t_game *game);
+void	fill_map(t_game *game, int move_x, int move_y);
+void	find_player(t_game *game, int *player_row, int *player_index);
+void	count_props(t_game *game);
 
-void  check_mapname(char *mapname);
-void  check_args(int argc);
-void  check_props(t_game *game);
-void  check_borders(t_game *game);
-void  check_shape(t_game *game);
-void  check_win(t_game *game);
-void  validate_map(t_game *game);
+void	check_mapname(char *mapname);
+void	check_args(int argc);
+void	check_props(t_game *game);
+void	check_borders(t_game *game);
+void	check_shape(t_game *game);
+void	check_win(t_game *game);
+void	validate_map(t_game *game);
 
-void  init_game(t_game *game);
-void  init_textures(t_game *game, t_textures *texture);
-void  render_map(mlx_t *mlx, t_game *game, t_textures *texture);
+void	init_game(t_game *game);
+void	init_textures(t_game *game, t_textures *texture);
+void	render_map(mlx_t *mlx, t_game *game, t_textures *texture);
+
+void	error_exit(char *str);
+void	delete_textures(t_game *game, t_textures *texture);
 
 #endif
