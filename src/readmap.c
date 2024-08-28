@@ -21,10 +21,10 @@ void	read_map(char *argv, t_game *game)
 	map = open(argv, O_RDONLY);
 	map_buffer = ft_strdup("");
 	if (map == -1)
-		ft_printf("[ERROR]: The file is invalid or empty");
+		error_exit("[ERROR]: The file is invalid or empty");
 	row = get_next_line(map);
 	if (!row)
-		ft_printf("[ERROR]: File is Empty!");
+		error_exit("[ERROR]: File is Empty!");
 	while (row)
 	{
 		map_buffer = ft_strjoin(map_buffer, row);
@@ -87,7 +87,7 @@ void	find_player(t_game *game, int *player_row, int *player_index)
 	}
 }
 
-void	countprops(t_game *game)
+void	count_props(t_game *game)
 {
 	int	i;
 	int	j;

@@ -14,12 +14,6 @@
 
 void	init_game(t_game *game)
 {
-	game = malloc(sizeof(t_game));
-	if (!game)
-	{
-		ft_printf("[ERROR]: Game malloc has failed");
-		exit (EXIT_FAILURE);
-	}
 	game->row = 0;
 	game->index = 0;
 	game->move_x = 0;
@@ -46,7 +40,7 @@ void	init_textures(t_game *game, t_textures *texture)
 	mlx_delete_texture(texture->temp);
 	texture->temp = mlx_load_png("../assets/Player.png");
 	texture->player = mlx_texture_to_image(game->mlx, texture->temp);
-	lx_delete_texture(texture->temp);
+	mlx_delete_texture(texture->temp);
 	texture->temp = mlx_load_png("../assets/Collectible.png");
 	texture->collectible = mlx_texture_to_image(game->mlx, texture->temp);
 }

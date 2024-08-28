@@ -15,15 +15,9 @@
 void	check_args(int argc)
 {
 	if (argc > 2)
-	{
-		ft_printf("[ERROR]: Too many arguments! Only one argument expected.");
-		exit (EXIT_FAILURE);
-	}
+		error_exit("[ERROR]: Too many arguments! Only one argument expected.");
 	if (argc < 2)
-	{
-		ft_printf("[ERROR]: Too few arguments! One argument expected.");
-		exit (EXIT_FAILURE);
-	}
+		error_exit("[ERROR]: Too few arguments! One argument expected.");
 }
 
 int	main(int argc, char *argv[])
@@ -33,10 +27,16 @@ int	main(int argc, char *argv[])
 
 	check_args(argc);
 	check_mapname(argv[1]);
+	game = malloc(sizeof(t_game));
+	if (!game)
+		error_exit("[ERROR]: Game malloc has failed!");
+	texture = malloc(sizeof(t_textures));
+	if (!texture)
+		error_exit("[ERROR]: Texture malloc has failed!");
 	init_game(game);
 	init_textures(game, texture);
 	read_map(argv[1], game);
-	find_player(game, game->player_y, game->player_x);
+	find_player(game, &game->player_y, &game->player_x);
 	fill_map(game, game->player_y, game->player_x);
 	validate_map(game);
 	render_map(game->mlx, game, texture);

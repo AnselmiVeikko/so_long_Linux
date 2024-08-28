@@ -40,7 +40,7 @@ typedef struct s_game
 typedef struct s_textures
 {
   mlx_texture_t *temp;
-  mlx_texture_t *floor;
+  mlx_image_t *floor;
   mlx_image_t *wall;
   mlx_image_t *collectible;
   mlx_image_t *player;
@@ -53,11 +53,15 @@ void  find_player(t_game *game, int *player_row, int *player_index);
 void  count_props(t_game *game);
 
 void  check_mapname(char *mapname);
+void  check_args(int argc);
 void  check_props(t_game *game);
 void  check_borders(t_game *game);
 void  check_shape(t_game *game);
 void  check_win(t_game *game);
+void  validate_map(t_game *game);
 
+void  init_game(t_game *game);
+void  init_textures(t_game *game, t_textures *texture);
 void  render_map(mlx_t *mlx, t_game *game, t_textures *texture);
 
 #endif

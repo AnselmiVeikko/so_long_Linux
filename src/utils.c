@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validatemap.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 12:12:36 by ahentton          #+#    #+#             */
-/*   Updated: 2024/08/23 12:46:50 by ahentton         ###   ########.fr       */
+/*   Created: 2024/08/28 11:57:09 by ahentton          #+#    #+#             */
+/*   Updated: 2024/08/28 12:09:14 by ahentton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_map(t_game *game)
+void	error_exit(char *str)
 {
-	int	i;
-	int	j;
+	size_t	len;
 
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if (!ft_strchr("1PCE0", game->map[i][j]))
-				error_exit("[MAP ERROR]: Invalid characters in the map file!");
-			j++;
-		}
-		i++;
-	}
-}
-
-void	validate_map(t_game *game)
-{
-	count_props(game);
-	check_props(game);
-	check_borders(game);
-	check_shape(game);
-	check_win(game);
-	check_map(game);
+	len = ft_strlen(str);
+	write(1, &str, len);
+	exit (EXIT_FAILURE);
 }
