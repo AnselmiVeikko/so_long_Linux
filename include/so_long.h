@@ -25,22 +25,27 @@ typedef struct s_game
   char  **map;
   char  **mapcopy;
   int   row;
-  int   colum;
+  int   column;
   int   move_x;
   int   move_y;
   int   player_count;
   int   collect_count;
-  int   move_count;
+  int   move_counter;
   int   exit_count;
   int   exit_game;
   int   locate_player_x;
   int   locate_player_y;
+} t_game;
+
+typedef struct s_textures
+{
   mlx_texture_t *temp;
+  mlx_texture_t *floor;
   mlx_image_t *wall;
-  mlx_image_t *collect;
+  mlx_image_t *collectible;
   mlx_image_t *player;
   mlx_image_t *exit;
-} t_game;
+} t_textures;
 
 void  read_map(char *argv, t_game *game);
 void  fill_map(t_game *game, int move_x, int move_y);
