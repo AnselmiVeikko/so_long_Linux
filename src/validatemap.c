@@ -23,7 +23,7 @@ void	check_map(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (ft_strchr("1PCE0", game->map[i][j]))
+			if (!ft_strchr("1PCE0", game->map[i][j]))
 			{
 				ft_printf("[MAP ERROR]: Invalid characters in the map file!");
 				exit (EXIT_FAILURE);
@@ -34,27 +34,12 @@ void	check_map(t_game *game)
 	}
 }
 
-void	check_args(int argc)
+void	validate_map(t_game *game)
 {
-	if (argc > 2)
-	{
-		ft_printf("[ERROR]: Too many arguments! Only one argument expected.");
-		exit (EXIT_FAILURE);
-	}
-	if (argc < 2)
-	{
-		ft_printf("[ERROR]: Too few arguments! One argument expected.");
-		exit (EXIT_FAILURE);
-	}
-}
-
-void	validate_map(t_game *game, int argc, char *argv)
-{
-	check_name(argv);
+	count_props(game);
 	check_props(game);
 	check_borders(game);
 	check_shape(game);
 	check_win(game);
 	check_map(game);
-	check_args(argc);
 }

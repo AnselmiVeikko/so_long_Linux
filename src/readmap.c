@@ -15,23 +15,23 @@
 void	read_map(char *argv, t_game *game)
 {
 	int		map;
-	char	*line;
+	char	*row;
 	char	*map_buffer;
 
 	map = open(argv, O_RDONLY);
 	map_buffer = ft_strdup("");
 	if (map == -1)
 		ft_printf("[ERROR]: The file is invalid or empty");
-	line = get_next_line(map);
-	if (!line)
+	row = get_next_line(map);
+	if (!row)
 		ft_printf("[ERROR]: File is Empty!");
-	while (line)
+	while (row)
 	{
-		map_buffer = ft_strjoin(map_buffer, line);
-		free (line);
-		line = get_next_line(map);
+		map_buffer = ft_strjoin(map_buffer, row);
+		free (row);
+		row = get_next_line(map);
 	}
-	free (line);
+	free (row);
 	close(map);
 	game->map = ft_split(map_buffer, '\n');
 	game->mapcopy = ft_split(map_buffer, '\n');
@@ -40,7 +40,7 @@ void	read_map(char *argv, t_game *game)
 
 void	fill_map(t_game *game, int move_x, int move_y)
 {
-	if (move_x < 0 || move_y < 0 || move_x >= game->colum
+	if (move_x < 0 || move_y < 0 || move_x >= game->index
 		|| move_y >= game->row || game->mapcopy[move_x][move_y] == '1'
 			|| game->mapcopy[move_x][move_y] == 'X')
 		return ;
@@ -64,7 +64,7 @@ void	fill_map(t_game *game, int move_x, int move_y)
 	fill_map(game, move_x, move_y + 1);
 }
 
-void	find_player(t_game *game, int *player_row, int *player_col)
+void	find_player(t_game *game, int *player_row, int *player_index)
 {
 	int	i;
 	int	j;
@@ -78,7 +78,7 @@ void	find_player(t_game *game, int *player_row, int *player_col)
 			if (game->mapcopy[i][j] == 'P')
 			{
 				*player_row = i;
-				*player_col = j;
+				*player_index = j;
 				return ;
 			}
 			j++;

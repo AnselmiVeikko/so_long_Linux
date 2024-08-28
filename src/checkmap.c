@@ -6,13 +6,13 @@
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:19:41 by ahentton          #+#    #+#             */
-/*   Updated: 2024/08/23 13:03:58 by ahentton         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:21:16 by ahentton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_name(char *mapname)
+void	check_mapname(char *mapname)
 {
 	size_t	name_len;
 
@@ -50,8 +50,8 @@ void	check_borders(t_game *game)
 
 	while (game->row)
 	{
-		while (game->colum)
-			game->colum++;
+		while (game->index)
+			game->index++;
 		game->row++;
 	}
 	i = 0;
@@ -60,7 +60,7 @@ void	check_borders(t_game *game)
 		j = 0;
 		while (game->map[i][j++])
 		{
-			if (i == 0 || i == game->row - 1 || j == 0 || j == game->colum -1)
+			if (i == 0 || i == game->row - 1 || j == 0 || j == game->index -1)
 			{
 				if (game->map[i][j] != '1')
 				{
@@ -75,7 +75,7 @@ void	check_borders(t_game *game)
 void	check_shape(t_game *game)
 {
 	size_t	row_len;
-	int	i;
+	int		i;
 
 	row_len = ft_strlen(game->map[0]);
 	i = 0;

@@ -25,7 +25,7 @@ typedef struct s_game
   char  **map;
   char  **mapcopy;
   int   row;
-  int   column;
+  int   index;
   int   move_x;
   int   move_y;
   int   player_count;
@@ -33,8 +33,8 @@ typedef struct s_game
   int   move_counter;
   int   exit_count;
   int   exit_game;
-  int   locate_player_x;
-  int   locate_player_y;
+  int   player_x;
+  int   player_y;
 } t_game;
 
 typedef struct s_textures
@@ -49,11 +49,15 @@ typedef struct s_textures
 
 void  read_map(char *argv, t_game *game);
 void  fill_map(t_game *game, int move_x, int move_y);
-void  find_player(t_game *game, int *player_row, int *player_col);
-void  check_name(char *mapname);
+void  find_player(t_game *game, int *player_row, int *player_index);
 void  count_props(t_game *game);
+
+void  check_mapname(char *mapname);
 void  check_props(t_game *game);
 void  check_borders(t_game *game);
 void  check_shape(t_game *game);
 void  check_win(t_game *game);
+
+void  render_map(mlx_t *mlx, t_game *game, t_textures *texture);
+
 #endif
