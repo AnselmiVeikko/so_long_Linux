@@ -39,8 +39,9 @@ int	main(int argc, char *argv[])
 	find_player(game, &game->player_y, &game->player_x);
 	fill_map(game, game->player_y, game->player_x);
 	validate_map(game);
-	render_map(game->mlx, game, texture);
+	render_map(game, texture);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
+	close_game(game, texture);
 	return (0);
 }

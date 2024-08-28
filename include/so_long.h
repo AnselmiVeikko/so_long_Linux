@@ -19,6 +19,7 @@
 # include "stdarg.h"
 # include "fcntl.h"
 
+# define SI 32
 typedef struct s_game
 {
 	mlx_t	*mlx;
@@ -62,9 +63,15 @@ void	validate_map(t_game *game);
 
 void	init_game(t_game *game);
 void	init_textures(t_game *game, t_textures *texture);
-void	render_map(mlx_t *mlx, t_game *game, t_textures *texture);
+
+void	render_walls(mlx_t *mlx, int row, int index, t_textures *texture);
+void	render_exit(mlx_t *mlx, int row, int index, t_textures *texture);
+void	render_player(mlx_t *mlx, int row, int index, t_textures *texture);
+void	render_collectibles(mlx_t *mlx, int row, int index, t_textures *texture);
+void	render_map(t_game *game, t_textures *texture);
 
 void	error_exit(char *str);
 void	delete_textures(t_game *game, t_textures *texture);
+void	close_game(t_game *game, t_textures *texture);
 
 #endif

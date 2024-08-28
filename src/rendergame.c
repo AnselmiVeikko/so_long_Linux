@@ -12,7 +12,32 @@
 
 #include "../include/so_long.h"
 
-void	render_map(mlx_t *mlx, t_game *game, t_textures *texture)
+void	render_walls(mlx_t *mlx, int row, int index, t_textures *texture)
+{
+	mlx_image_to_window(mlx, texture->floor, index * SI, row * SI);
+	mlx_image_to_window(mlx, texture->wall, index * SI, row * SI);
+}
+
+void	render_exit(mlx_t *mlx, int row, int index, t_textures *texture)
+{
+	mlx_image_to_window(mlx, texture->floor, index * SI, row * SI);
+	mlx_image_to_window(mlx, texture->exit, index * SI, row * SI);
+}
+
+void	render_player(mlx_t *mlx, int row, int index, t_textures *texture)
+{
+	
+	mlx_image_to_window(mlx, texture->floor, index * SI, row * SI);
+	mlx_image_to_window(mlx, texture->player, index * SI, row * SI);
+}
+
+void	render_collectibles(mlx_t *mlx, int row, int index, t_textures *texture)
+{	
+	mlx_image_to_window(mlx, texture->floor, index * SI, row * SI);
+	mlx_image_to_window(mlx, texture->collectible, index * SI, row * SI);
+}
+
+void	render_map(t_game *game, t_textures *texture)
 {
 	int	i;
 	int	j;
@@ -24,15 +49,15 @@ void	render_map(mlx_t *mlx, t_game *game, t_textures *texture)
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == '1')
-				mlx_image_to_window(mlx, texture->wall, i, j);
+				render_walls(game->mlx, i, j, texture);
 			if (game->map[i][j] == 'E')
-				mlx_image_to_window(mlx, texture->exit, i, j);
+				render_exit(game->mlx, i, j, texture);
 			if (game->map[i][j] == 'C')
-				mlx_image_to_window(mlx, texture->collectible, i, j);
+				render_collectibles(game->mlx, i, j, texture);
 			if (game->map[i][j] == 'P')
-				mlx_image_to_window(mlx, texture->player, i, j);
+				render_player(game->mlx, i, j, texture);
 			else
-				mlx_image_to_window(mlx, texture->floor, i, j);
+				mlx_image_to_window(game->mlx, texture->floor, j * SI, i * SI);
 			j++;
 		}
 		i++;

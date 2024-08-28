@@ -14,10 +14,7 @@
 
 void	error_exit(char *str)
 {
-	size_t	len;
-
-	len = ft_strlen(str);
-	write(1, &str, len);
+	ft_printf("%s", str);
 	exit (EXIT_FAILURE);
 }
 
@@ -28,4 +25,11 @@ void	delete_textures(t_game *game, t_textures *texture)
 	mlx_delete_image(game->mlx, texture->player);
 	mlx_delete_image(game->mlx, texture->collectible);
 	mlx_delete_image(game->mlx, texture->exit);
+}
+
+void	close_game(t_game *game, t_textures *texture)
+{
+	delete_textures(game, texture);
+	free (game);
+	mlx_close_window(game->mlx);
 }

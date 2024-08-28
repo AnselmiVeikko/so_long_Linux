@@ -29,18 +29,18 @@ void	init_game(t_game *game)
 
 void	init_textures(t_game *game, t_textures *texture)
 {
-	texture->temp = mlx_load_png("../assets/Exit.png");
+	texture->temp = mlx_load_png("assets/Exit.png");
 	texture->exit = mlx_texture_to_image(game->mlx, texture->temp);
 	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("../assets/Wall.png");
+	texture->temp = mlx_load_png("assets/Wall.png");
 	texture->wall = mlx_texture_to_image(game->mlx, texture->temp);
 	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("../assets/Floor.png");
+	texture->temp = mlx_load_png("assets/Floor.png");
 	texture->floor = mlx_texture_to_image(game->mlx, texture->temp);
 	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("../assets/Player.png");
+	texture->temp = mlx_load_png("assets/Player.png");
 	texture->player = mlx_texture_to_image(game->mlx, texture->temp);
 	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("../assets/Collectible.png");
+	texture->temp = mlx_load_png("assets/Collectible.png");
 	texture->collectible = mlx_texture_to_image(game->mlx, texture->temp);
 }
