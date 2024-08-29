@@ -36,24 +36,26 @@ void	check_borders(t_game *game)
 	int	i;
 	int	j;
 
-	while (game->row)
+	while (game->row != '\0')
 	{
-		while (game->index)
+		while (game->index != '\0')
 			game->index++;
 		game->row++;
 	}
 	i = 0;
-	while (game->map[i++])
+	while (game->map[i])
 	{
 		j = 0;
-		while (game->map[i][j++])
+		while (game->map[i][j])
 		{
 			if (i == 0 || i == game->row - 1 || j == 0 || j == game->index -1)
 			{
 				if (game->map[i][j] != '1')
 					error_exit("[MAP ERROR]: Invalid map borders!\n");
 			}
+			j++;
 		}
+		i++;
 	}
 }
 
@@ -85,6 +87,7 @@ void	check_win(t_game *game)
 	i = 0;
 	while (game->mapcopy[i])
 	{
+		ft_printf("%s\n", game->mapcopy[i]);
 		if (ft_strchr(game->mapcopy[i], 'C')
 			|| ft_strchr(game->mapcopy[i], 'E'))
 			error_exit("[ERROR]: Map is invalid! Props remain after fill!\n");

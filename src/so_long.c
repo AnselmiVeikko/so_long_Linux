@@ -33,12 +33,11 @@ int	main(int argc, char *argv[])
 	texture = malloc(sizeof(t_textures));
 	if (!texture)
 		error_exit("[ERROR]: Texture malloc has failed!");
-	init_game(game);
-	init_textures(game, texture);
 	read_map(argv[1], game);
-	find_player(game, &game->player_y, &game->player_x);
-	fill_map(game, game->player_y, game->player_x);
 	validate_map(game);
+	init_game(game);
+	game->mlx = mlx_init(game->row * SI, game->index * SI, "Mordor42", false);
+	init_textures(game, texture);
 	render_map(game, texture);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
