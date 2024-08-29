@@ -78,12 +78,12 @@ void	check_win(t_game *game)
 {
 	int	i;
 	int	player_row;
-	int	player_col;
+	int	player_index;
 
 	player_row = 0;
-	player_col = 0;
-	find_player(game, &player_row, &player_col);
-	fill_map(game, player_row, player_col);
+	player_index = 0;
+	find_player(game, &player_row, &player_index);
+	fill_map(game, player_row, player_index);
 	i = 0;
 	while (game->mapcopy[i])
 	{

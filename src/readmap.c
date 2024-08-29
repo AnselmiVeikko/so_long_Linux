@@ -38,30 +38,19 @@ void	read_map(char *argv, t_game *game)
 	free (map_buffer);
 }
 
-void	fill_map(t_game *game, int move_x, int move_y)
+void	fill_map(t_game *game, int y, int x)
 {
-	if (move_x < 0 || move_y < 0 || move_x >= game->index
-		|| move_y >= game->row || game->mapcopy[move_x][move_y] == '1'
-			|| game->mapcopy[move_x][move_y] == 'X')
+	if (game->mapcopy[y][x] == '1'
+			|| game->mapcopy[y][x] == 'X')
 		return ;
-	if (((game->mapcopy[move_x + 1][move_y] == 'E')
-		|| (game->mapcopy[move_x - 1][move_y] == 'E'))
-			&& ((game->mapcopy[move_x][move_y + 1] == '1')
-				|| (game->mapcopy[move_x][move_y - 1] == '1')))
-		return ;
-	if (((game->mapcopy[move_x][move_y + 1] == 'E'
-			|| game->mapcopy[move_x][move_y - 1] == 'E'))
-			&& ((game->mapcopy[move_x + 1][move_y] == '1')
-				|| (game->mapcopy[move_x - 1][move_y] == '1')))
-		return ;
-	if (game->mapcopy[move_x][move_y] == 'E'
-			|| game->mapcopy[move_x][move_y] == 'C')
-		game->mapcopy[move_x][move_y] = '0';
-	game->mapcopy[move_x][move_y] = 'X';
-	fill_map(game, move_x - 1, move_y);
-	fill_map(game, move_x + 1, move_y);
-	fill_map(game, move_x, move_y - 1);
-	fill_map(game, move_x, move_y + 1);
+	if (game->mapcopy[y][x] == 'E'
+			|| game->mapcopy[y][x] == 'C')
+		game->mapcopy[y][x] = '0';
+	game->mapcopy[y][x] = 'X';
+	fill_map(game, y - 1, x);
+	fill_map(game, y + 1, x);
+	fill_map(game, y, x - 1);
+	fill_map(game, y, x + 1);
 }
 
 void	find_player(t_game *game, int *player_row, int *player_index)

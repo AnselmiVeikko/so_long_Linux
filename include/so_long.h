@@ -48,8 +48,9 @@ typedef struct s_textures
 	mlx_image_t		*exit;
 }	t_textures;
 
+void	check_rows(t_game *game);
 void	read_map(char *argv, t_game *game);
-void	fill_map(t_game *game, int move_x, int move_y);
+void	fill_map(t_game *game, int x, int y);
 void	find_player(t_game *game, int *player_row, int *player_index);
 void	count_props(t_game *game);
 
