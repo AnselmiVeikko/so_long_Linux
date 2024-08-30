@@ -36,12 +36,13 @@ void	check_borders(t_game *game)
 	int	i;
 	int	j;
 
-	while (game->row != '\0')
+	while (game->map[game->row])
 	{
-		while (game->index != '\0')
+		while (game->map[game->row][game->index])
 			game->index++;
 		game->row++;
 	}
+	ft_printf("[ROW]:%d, [INDEX]:%d", game->row, game->index);
 	i = 0;
 	while (game->map[i])
 	{

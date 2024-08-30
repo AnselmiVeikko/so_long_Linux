@@ -36,6 +36,7 @@ int	main(int argc, char *argv[])
 	read_map(argv[1], game);
 	validate_map(game);
 	init_game(game);
+	ft_printf("[ROW]:%d, [INDEX]:%d\n", game->row, game->index);
 	game->mlx = mlx_init(game->row * SI, game->index * SI, "Mordor42", false);
 	init_textures(game, texture);
 	render_map(game, texture);
