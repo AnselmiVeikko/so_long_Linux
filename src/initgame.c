@@ -14,8 +14,8 @@
 
 void	init_game(t_game *game)
 {
-	game->row = 0;
-	game->index = 0;
+	game->row = count_row(game);
+	game->index = count_index(game);
 	game->move_x = 0;
 	game->move_y = 0;
 	game->player_count = 0;

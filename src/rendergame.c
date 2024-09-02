@@ -50,11 +50,11 @@ void	render_map(t_game *game, t_textures *texture)
 		{
 			if (game->map[i][j] == '1')
 				render_walls(game->mlx, i, j, texture);
-			if (game->map[i][j] == 'E')
+			else if (game->map[i][j] == 'E')
 				render_exit(game->mlx, i, j, texture);
-			if (game->map[i][j] == 'C')
+			else if (game->map[i][j] == 'C')
 				render_collectibles(game->mlx, i, j, texture);
-			if (game->map[i][j] == 'P')
+			else if (game->map[i][j] == 'P')
 				render_player(game->mlx, i, j, texture);
 			else
 				mlx_image_to_window(game->mlx, texture->floor, j * SI, i * SI);

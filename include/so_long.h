@@ -19,7 +19,7 @@
 # include "stdarg.h"
 # include "fcntl.h"
 
-# define SI 32
+# define SI 128
 typedef struct s_game
 {
 	mlx_t	*mlx;
@@ -54,6 +54,9 @@ void	fill_map(t_game *game, int x, int y);
 void	find_player(t_game *game, int *player_row, int *player_index);
 void	count_props(t_game *game);
 
+int		count_row(t_game *game);
+int		count_index(t_game *game);
+
 void	check_mapname(char *mapname);
 void	check_args(int argc);
 void	check_props(t_game *game);
@@ -72,7 +75,6 @@ void	render_collectibles(mlx_t *mlx, int row, int index, t_textures *texture);
 void	render_map(t_game *game, t_textures *texture);
 
 void	error_exit(char *str);
-void	delete_textures(t_game *game, t_textures *texture);
-void	close_game(t_game *game, t_textures *texture);
+void	free_game(t_game *game, t_textures *texture);
 
 #endif

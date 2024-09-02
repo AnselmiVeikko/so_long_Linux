@@ -37,11 +37,10 @@ int	main(int argc, char *argv[])
 	validate_map(game);
 	init_game(game);
 	ft_printf("[ROW]:%d, [INDEX]:%d\n", game->row, game->index);
-	game->mlx = mlx_init(game->row * SI, game->index * SI, "Mordor42", false);
+	game->mlx = mlx_init(game->index * SI, game->row * SI, "Mordor42", false);
 	init_textures(game, texture);
 	render_map(game, texture);
 	mlx_loop(game->mlx);
-	mlx_terminate(game->mlx);
-	close_game(game, texture);
+	free_game(game, texture);
 	return (0);
 }

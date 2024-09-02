@@ -42,7 +42,7 @@ void	check_borders(t_game *game)
 			game->index++;
 		game->row++;
 	}
-	ft_printf("[ROW]:%d, [INDEX]:%d", game->row, game->index);
+	ft_printf("[ROW]:%d, [INDEX]:%d\n", game->row, game->index);
 	i = 0;
 	while (game->map[i])
 	{
