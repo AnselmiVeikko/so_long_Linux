@@ -19,7 +19,7 @@
 # include "stdarg.h"
 # include "fcntl.h"
 
-# define SI 128
+# define SI 32
 typedef struct s_game
 {
 	mlx_t	*mlx;
