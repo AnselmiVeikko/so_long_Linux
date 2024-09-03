@@ -49,10 +49,6 @@ void	fill_map(t_game *game, int x, int y);
 void	find_player(t_game *game, int *player_row, int *player_index);
 void	count_props(t_game *game);
 
-int		count_row(t_game *game);
-int		count_index(t_game *game);
-int		count_collectibles(t_game *game);
-
 void	check_mapname(char *mapname);
 void	check_args(int argc);
 void	check_props(t_game *game);

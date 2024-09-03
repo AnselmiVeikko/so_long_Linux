@@ -14,14 +14,15 @@
 
 void	init_game(t_game *game)
 {
-	game->row = count_row(game);
-	game->index = count_index(game);
+	game->row = 0;
+	game->index = 0;
 	game->player_count = 0;
-	game->collect_count = count_collectibles(game);
+	game->collect_count = 0;
 	game->exit_count = 0;
 	game->move_counter = 0;
 	game->exit_game = 0;
-	find_player(game, &game->player_y, &game->player_x);
+	game->player_y = 0;
+	game->player_x = 0;
 }
 
 void	init_textures(t_game *game)
