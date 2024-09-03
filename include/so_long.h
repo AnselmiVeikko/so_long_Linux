@@ -77,6 +77,7 @@ void	move_player_left(t_game *game);
 void	move_player_right(t_game *game);
 
 void	error_exit(char *str);
+void	free_map(char **map);
 void	close_game(t_game *game);
 
 #endif

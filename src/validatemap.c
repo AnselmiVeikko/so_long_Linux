@@ -31,6 +31,19 @@ void	check_map(t_game *game)
 	}
 }
 
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	while (i >= 0)
+	{
+		free (map[i]);
+		i--;
+	}
+}
 void	validate_map(t_game *game)
 {
 	count_props(game);
