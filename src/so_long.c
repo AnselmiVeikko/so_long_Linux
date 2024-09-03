@@ -40,7 +40,8 @@ int	main(int argc, char *argv[])
 	game->mlx = mlx_init(game->index * SI, game->row * SI, "Mordor42", false);
 	init_textures(game, texture);
 	render_map(game, texture);
+	mlx_key_hook(game->mlx, (mlx_keyfunc)close_window, game, texture);
 	mlx_loop(game->mlx);
-	free_game(game, texture);
+	close_game(game, texture);
 	return (0);
 }

@@ -74,7 +74,9 @@ void	render_player(mlx_t *mlx, int row, int index, t_textures *texture);
 void	render_collectibles(mlx_t *mlx, int row, int index, t_textures *texture);
 void	render_map(t_game *game, t_textures *texture);
 
+void	close_window(mlx_key_data_t paramkey, t_game *game);
+
 void	error_exit(char *str);
-void	free_game(t_game *game, t_textures *texture);
+void	close_game(t_game *game, t_textures *texture);
 
 #endif

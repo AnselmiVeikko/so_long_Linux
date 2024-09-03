@@ -18,7 +18,7 @@ void	error_exit(char *str)
 	exit (EXIT_FAILURE);
 }
 
-void	free_game(t_game *game, t_textures *texture)
+void	close_game(t_game *game, t_textures *texture)
 {
 	mlx_delete_image(game->mlx, texture->exit);
 	mlx_delete_image(game->mlx, texture->wall);
