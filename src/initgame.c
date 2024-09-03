@@ -27,20 +27,20 @@ void	init_game(t_game *game)
 	game->player_y = 0;
 }
 
-void	init_textures(t_game *game, t_textures *texture)
+void	init_textures(t_game *game)
 {
-	texture->temp = mlx_load_png("assets/Exit.png");
-	texture->exit = mlx_texture_to_image(game->mlx, texture->temp);
-	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("assets/Wall.png");
-	texture->wall = mlx_texture_to_image(game->mlx, texture->temp);
-	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("assets/Floor.png");
-	texture->floor = mlx_texture_to_image(game->mlx, texture->temp);
-	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("assets/Player.png");
-	texture->player = mlx_texture_to_image(game->mlx, texture->temp);
-	mlx_delete_texture(texture->temp);
-	texture->temp = mlx_load_png("assets/Collectible.png");
-	texture->collectible = mlx_texture_to_image(game->mlx, texture->temp);
+	game->temp = mlx_load_png("assets/Exit.png");
+	game->exit = mlx_texture_to_image(game->mlx, game->temp);
+	mlx_delete_texture(game->temp);
+	game->temp = mlx_load_png("assets/Wall.png");
+	game->wall = mlx_texture_to_image(game->mlx, game->temp);
+	mlx_delete_texture(game->temp);
+	game->temp = mlx_load_png("assets/Floor.png");
+	game->floor = mlx_texture_to_image(game->mlx, game->temp);
+	mlx_delete_texture(game->temp);
+	game->temp = mlx_load_png("assets/Player.png");
+	game->player = mlx_texture_to_image(game->mlx, game->temp);
+	mlx_delete_texture(game->temp);
+	game->temp = mlx_load_png("assets/Collectible.png");
+	game->collectible = mlx_texture_to_image(game->mlx, game->temp);
 }

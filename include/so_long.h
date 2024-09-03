@@ -36,17 +36,14 @@ typedef struct s_game
 	int		exit_game;
 	int		player_x;
 	int		player_y;
-}	t_game;
 
-typedef struct s_textures
-{
-	mlx_texture_t	*temp;
+	mlx_texture_t *temp;
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
 	mlx_image_t		*collectible;
 	mlx_image_t		*player;
 	mlx_image_t		*exit;
-}	t_textures;
+}	t_game;
 
 void	check_rows(t_game *game);
 void	read_map(char *argv, t_game *game);
@@ -66,17 +63,17 @@ void	check_win(t_game *game);
 void	validate_map(t_game *game);
 
 void	init_game(t_game *game);
-void	init_textures(t_game *game, t_textures *texture);
+void	init_textures(t_game *game);
 
-void	render_walls(mlx_t *mlx, int row, int index, t_textures *texture);
-void	render_exit(mlx_t *mlx, int row, int index, t_textures *texture);
-void	render_player(mlx_t *mlx, int row, int index, t_textures *texture);
-void	render_collectibles(mlx_t *mlx, int row, int index, t_textures *texture);
-void	render_map(t_game *game, t_textures *texture);
+void	render_walls(t_game *game, int row, int index);
+void	render_exit(t_game *game, int row, int index);
+void	render_player(t_game *game, int row, int index);
+void	render_collectibles(t_game *game, int row, int index);
+void	render_map(t_game *game);
 
 void	close_window(mlx_key_data_t paramkey, t_game *game);
 
 void	error_exit(char *str);
-void	close_game(t_game *game, t_textures *texture);
+void	close_game(t_game *game);
 
 #endif

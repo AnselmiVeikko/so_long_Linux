@@ -15,5 +15,5 @@
 void  close_window(mlx_key_data_t paramkey, t_game *game)
 {
   if ((paramkey.key == MLX_KEY_ESCAPE) && paramkey.action == MLX_PRESS)
-    close_game(game->mlx, texture);
+    close_game(game);
 }

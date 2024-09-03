@@ -18,13 +18,13 @@ void	error_exit(char *str)
 	exit (EXIT_FAILURE);
 }
 
-void	close_game(t_game *game, t_textures *texture)
+void	close_game(t_game *game)
 {
-	mlx_delete_image(game->mlx, texture->exit);
-	mlx_delete_image(game->mlx, texture->wall);
-	mlx_delete_image(game->mlx, texture->floor);
-	mlx_delete_image(game->mlx, texture->player);
-	mlx_delete_image(game->mlx, texture->collectible);
+	mlx_delete_image(game->mlx, game->exit);
+	mlx_delete_image(game->mlx, game->wall);
+	mlx_delete_image(game->mlx, game->floor);
+	mlx_delete_image(game->mlx, game->player);
+	mlx_delete_image(game->mlx, game->collectible);
 	free(game->map);
 	mlx_close_window(game->mlx);
 	mlx_terminate(game->mlx);
