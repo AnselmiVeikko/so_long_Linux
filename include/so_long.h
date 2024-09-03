@@ -27,8 +27,6 @@ typedef struct s_game
 	char	**mapcopy;
 	int		row;
 	int		index;
-	int		move_x;
-	int		move_y;
 	int		player_count;
 	int		collect_count;
 	int		move_counter;
@@ -53,6 +51,7 @@ void	count_props(t_game *game);
 
 int		count_row(t_game *game);
 int		count_index(t_game *game);
+int		count_collectibles(t_game *game);
 
 void	check_mapname(char *mapname);
 void	check_args(int argc);
@@ -71,7 +70,11 @@ void	render_player(t_game *game, int row, int index);
 void	render_collectibles(t_game *game, int row, int index);
 void	render_map(t_game *game);
 
-void	close_window(mlx_key_data_t paramkey, t_game *game);
+void	key_comms(mlx_key_data_t paramkey, t_game *game);
+void	move_player_up(t_game *game);
+void	move_player_down(t_game *game);
+void	move_player_left(t_game *game);
+void	move_player_right(t_game *game);
 
 void	error_exit(char *str);
 void	close_game(t_game *game);

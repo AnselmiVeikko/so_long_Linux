@@ -32,11 +32,11 @@ int	main(int argc, char *argv[])
 	read_map(argv[1], game);
 	validate_map(game);
 	init_game(game);
-	ft_printf("[ROW]:%d, [INDEX]:%d\n", game->row, game->index);
+	ft_printf("[ROW]:%d, [INDEX]:%d\n", game->player_y, game->player_x);
 	game->mlx = mlx_init(game->index * SI, game->row * SI, "Mordor42", false);
 	init_textures(game);
 	render_map(game);
-	mlx_key_hook(game->mlx, (mlx_keyfunc)close_window, game);
+	mlx_key_hook(game->mlx, (mlx_keyfunc)key_comms, game);
 	mlx_loop(game->mlx);
 	close_game(game);
 	return (0);

@@ -29,6 +29,8 @@ void	render_player(t_game *game, int row, int index)
 	
 	mlx_image_to_window(game->mlx, game->floor, index * SI, row * SI);
 	mlx_image_to_window(game->mlx, game->player, index * SI, row * SI);
+	game->player_y = row;
+	game->player_x = index;
 }
 
 void	render_collectibles(t_game *game, int row, int index)

@@ -59,12 +59,12 @@ void	find_player(t_game *game, int *player_row, int *player_index)
 	int	j;
 
 	i = 0;
-	while (game->mapcopy[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while (game->mapcopy[i][j])
+		while (game->map[i][j])
 		{
-			if (game->mapcopy[i][j] == 'P')
+			if (game->map[i][j] == 'P')
 			{
 				*player_row = i;
 				*player_index = j;

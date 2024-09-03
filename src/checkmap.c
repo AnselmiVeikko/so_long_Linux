@@ -42,7 +42,6 @@ void	check_borders(t_game *game)
 			game->index++;
 		game->row++;
 	}
-	ft_printf("[ROW]:%d, [INDEX]:%d\n", game->row, game->index);
 	i = 0;
 	while (game->map[i])
 	{
@@ -88,7 +87,6 @@ void	check_win(t_game *game)
 	i = 0;
 	while (game->mapcopy[i])
 	{
-		ft_printf("%s\n", game->mapcopy[i]);
 		if (ft_strchr(game->mapcopy[i], 'C')
 			|| ft_strchr(game->mapcopy[i], 'E'))
 			error_exit("[ERROR]: Map is invalid! Props remain after fill!\n");

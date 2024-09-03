@@ -30,14 +30,6 @@ void	close_game(t_game *game)
 	mlx_terminate(game->mlx);
 	exit (EXIT_SUCCESS);
 }
-/*
-void	close_game(t_game *game, t_textures *texture)
-{
-	delete_textures(game, texture);
-	free (game->map);
-	mlx_close_window(game->mlx);
-	exit (EXIT_SUCCESS);
-}*/
 
 int	count_row(t_game *game)
 {
@@ -57,4 +49,28 @@ int	count_index(t_game *game)
 	while (game->map[1][index])
 		index++;
 	return (index);
+}
+
+int	count_collectibles(t_game *game)
+{
+	int	i;
+	int	j;
+	int	collectibles;
+
+	i = 0;
+	j = 0;
+	collectibles = 0;
+
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'C')
+				collectibles++;
+			j++;
+		}
+		i++;
+	}
+	return (collectibles);
 }
