@@ -6,7 +6,7 @@
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:24:53 by ahentton          #+#    #+#             */
-/*   Updated: 2024/08/28 12:35:14 by ahentton         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:46:55 by ahentton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,28 @@
 # include "fcntl.h"
 
 # define SI 32
+
 typedef struct s_game
 {
-	mlx_t	*mlx;
-	char	**map;
-	char	**mapcopy;
-	int		row;
-	int		index;
-	int		player_count;
-	int		collect_count;
-	int		move_counter;
-	int		exit_count;
-	int		exit_game;
-	int		player_x;
-	int		player_y;
-
-	mlx_texture_t *temp;
+	mlx_t			*mlx;
+	char			**map;
+	char			**mapcopy;
+	int				row;
+	int				index;
+	int				player_count;
+	int				collect_count;
+	int				move_counter;
+	int				exit_count;
+	int				exit_game;
+	int				player_x;
+	int				player_y;
+	mlx_texture_t	*temp;
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
 	mlx_image_t		*collectible;
 	mlx_image_t		*player;
 	mlx_image_t		*exit;
-}	t_game;
+}			t_game;
 
 void	check_rows(t_game *game);
 void	read_map(char *argv, t_game *game);
