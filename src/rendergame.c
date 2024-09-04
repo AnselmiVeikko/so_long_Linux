@@ -6,7 +6,7 @@
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:14:02 by ahentton          #+#    #+#             */
-/*   Updated: 2024/08/28 11:22:46 by ahentton         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:01:12 by ahentton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	render_exit(t_game *game, int row, int index)
 
 void	render_player(t_game *game, int row, int index)
 {
-	
 	mlx_image_to_window(game->mlx, game->floor, index * SI, row * SI);
 	mlx_image_to_window(game->mlx, game->player, index * SI, row * SI);
 	game->player_y = row;
