@@ -14,13 +14,13 @@
 
 void	key_comms(mlx_key_data_t paramkey, t_game *game)
 {
-	if ((paramkey.key == MLX_KEY_UP) && paramkey.action == MLX_PRESS)
+	if ((paramkey.key == MLX_KEY_W) && paramkey.action == MLX_PRESS)
 		move_player_up(game);
-	if ((paramkey.key == MLX_KEY_DOWN) && paramkey.action == MLX_PRESS)
+	if ((paramkey.key == MLX_KEY_S) && paramkey.action == MLX_PRESS)
 		move_player_down(game);
-	if ((paramkey.key == MLX_KEY_LEFT) && paramkey.action == MLX_PRESS)
+	if ((paramkey.key == MLX_KEY_A) && paramkey.action == MLX_PRESS)
 		move_player_left(game);
-	if ((paramkey.key == MLX_KEY_RIGHT) && paramkey.action == MLX_PRESS)
+	if ((paramkey.key == MLX_KEY_D) && paramkey.action == MLX_PRESS)
 		move_player_right(game);
 	if ((paramkey.key == MLX_KEY_ESCAPE) && paramkey.action == MLX_PRESS)
 		close_game(game);
