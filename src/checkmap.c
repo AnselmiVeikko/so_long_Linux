@@ -92,5 +92,5 @@ void	check_win(t_game *game)
 			error_exit("[ERROR]: Map is invalid! Props remain after fill!\n");
 		i++;
 	}
-	free (game->mapcopy);
+	free_map(game->mapcopy);
 }
