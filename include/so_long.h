@@ -25,8 +25,8 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	char			**map;
-	int				y_index;
-	int				x_index;
+	int				y_size;
+	int				x_size;
 	int				player_count;
 	int				collect_count;
 	int				move_counter;
@@ -64,11 +64,8 @@ void	init_textures(t_game *game);
 
 void	render_map(t_game *game);
 
+void	move_player(t_game *game, int move_y, int move_x);
 void	key_comms(mlx_key_data_t paramkey, t_game *game);
-void	move_player_up(t_game *game);
-void	move_player_down(t_game *game);
-void	move_player_left(t_game *game);
-void	move_player_right(t_game *game);
 
 void	error_exit(char *str);
 void	free_map(char **map);

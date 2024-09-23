@@ -42,7 +42,8 @@ void	check_borders(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (i == 0 || i == game->y_index - 1 || j == 0 || j == game->x_index -1)
+			if (i == 0 || i == game->y_size - 1 ||
+				j == 0 || j == game->x_size -1)
 			{
 				if (game->map[i][j] != '1')
 					error_exit("[MAP ERROR]: Invalid map borders!\n");
@@ -70,7 +71,7 @@ void	check_shape(t_game *game)
 
 void	check_win(t_game *game, char *argv)
 {
-	int	i;
+	int		i;
 	char	**map;
 
 	map = read_map(argv);

@@ -12,30 +12,30 @@
 
 #include "../include/so_long.h"
 
-static void	render_wall(t_game *game, int y_index, int x_index)
+static void	render_wall(t_game *game, int y, int x)
 {
-	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
-	mlx_image_to_window(game->mlx, game->wall, x_index * TILE, y_index * TILE);
+	mlx_image_to_window(game->mlx, game->floor, x * TILE, y * TILE);
+	mlx_image_to_window(game->mlx, game->wall, x * TILE, y * TILE);
 }
 
-static void	render_exit(t_game *game, int y_index, int x_index)
+static void	render_exit(t_game *game, int y, int x)
 {
-	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
-	mlx_image_to_window(game->mlx, game->exit, x_index * TILE, y_index * TILE);
+	mlx_image_to_window(game->mlx, game->floor, x * TILE, y * TILE);
+	mlx_image_to_window(game->mlx, game->exit, x * TILE, y * TILE);
 }
 
-static void	render_player(t_game *game, int y_index, int x_index)
+static void	render_player(t_game *game, int y, int x)
 {
-	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
-	mlx_image_to_window(game->mlx, game->player, x_index * TILE, y_index * TILE);
-	game->player_y = y_index;
-	game->player_x = x_index;
+	mlx_image_to_window(game->mlx, game->floor, x * TILE, y * TILE);
+	mlx_image_to_window(game->mlx, game->player, x * TILE, y * TILE);
+	game->player_y = y;
+	game->player_x = x;
 }
 
-static void	render_collectible(t_game *game, int y_index, int x_index)
+static void	render_collectible(t_game *game, int y, int x)
 {	
-	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
-	mlx_image_to_window(game->mlx, game->collectible, x_index * TILE, y_index * TILE);
+	mlx_image_to_window(game->mlx, game->floor, x * TILE, y * TILE);
+	mlx_image_to_window(game->mlx, game->collectible, x * TILE, y * TILE);
 }
 
 void	render_map(t_game *game)
