@@ -31,12 +31,11 @@ void	check_map(t_game *game)
 	}
 }
 
-void	validate_map(t_game *game)
+void	validate_map(t_game *game, char *argv)
 {
-	count_props(game);
 	check_props(game);
 	check_borders(game);
 	check_shape(game);
-	check_win(game);
+	check_win(game, argv);
 	check_map(game);
 }

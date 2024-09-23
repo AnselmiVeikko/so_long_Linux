@@ -12,17 +12,16 @@
 
 #include "../include/so_long.h"
 
-void	init_game(t_game *game)
+void	init_game(t_game *game, char *argv)
 {
-	game->row = 0;
-	game->index = 0;
-	game->player_count = 0;
-	game->collect_count = 0;
-	game->exit_count = 0;
+	game->map = read_map(argv);
+	game->y_index = init_y(game);
+	game->x_index = init_x(game);
+	count_props(game);
 	game->move_counter = 0;
 	game->exit_game = 0;
-	game->player_y = 0;
-	game->player_x = 0;
+	game->player_y = find_player_y(game);
+	game->player_x = find_player_x(game);
 }
 
 void	init_textures(t_game *game)
@@ -41,4 +40,5 @@ void	init_textures(t_game *game)
 	mlx_delete_texture(game->temp);
 	game->temp = mlx_load_png("assets/Collectible.png");
 	game->collectible = mlx_texture_to_image(game->mlx, game->temp);
+	mlx_delete_texture(game->temp);
 }

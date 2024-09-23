@@ -12,89 +12,43 @@
 
 #include "../include/so_long.h"
 
-void	read_map(char *argv, t_game *game)
+char	**read_map(char *argv)
 {
-	int		map;
+	int		read_map;
 	char	*row;
 	char	*map_buffer;
+	char	**map;
 
-	map = open(argv, O_RDONLY);
+	read_map = open(argv, O_RDONLY);
 	map_buffer = ft_strdup("");
-	if (map == -1)
+	if (read_map == -1)
 		error_exit("[ERROR]: The file is invalid or empty");
-	row = get_next_line(map);
+	row = get_next_line(read_map);
 	if (!row)
 		error_exit("[ERROR]: File is Empty!");
 	while (row)
 	{
 		map_buffer = ft_strjoin(map_buffer, row);
 		free (row);
-		row = get_next_line(map);
+		row = get_next_line(read_map);
 	}
 	free (row);
-	close(map);
-	game->map = ft_split(map_buffer, '\n');
-	game->mapcopy = ft_split(map_buffer, '\n');
-	free (map_buffer);
+	close(read_map);
+	map = ft_split(map_buffer, '\n');
+	return (map);
 }
 
-void	fill_map(t_game *game, int y, int x)
+void	fill_map(char **map, int y, int x)
 {
-	if (game->mapcopy[y][x] == '1'
-			|| game->mapcopy[y][x] == 'X')
+	if (map[y][x] == '1'
+			|| map[y][x] == 'X')
 		return ;
-	if (game->mapcopy[y][x] == 'E'
-			|| game->mapcopy[y][x] == 'C')
-		game->mapcopy[y][x] = '0';
-	game->mapcopy[y][x] = 'X';
-	fill_map(game, y - 1, x);
-	fill_map(game, y + 1, x);
-	fill_map(game, y, x - 1);
-	fill_map(game, y, x + 1);
-}
-
-void	find_player(t_game *game, int *player_row, int *player_index)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if (game->map[i][j] == 'P')
-			{
-				*player_row = i;
-				*player_index = j;
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	count_props(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if (game->map[i][j] == 'P')
-				game->player_count++;
-			if (game->map[i][j] == 'C')
-				game->collect_count++;
-			if (game->map[i][j] == 'E')
-				game->exit_count++;
-			j++;
-		}
-		i++;
-	}
+	if (map[y][x] == 'E'
+			|| map[y][x] == 'C')
+		map[y][x] = '0';
+	map[y][x] = 'X';
+	fill_map(map, y - 1, x);
+	fill_map(map, y + 1, x);
+	fill_map(map, y, x - 1);
+	fill_map(map, y, x + 1);
 }

@@ -19,15 +19,14 @@
 # include "stdarg.h"
 # include "fcntl.h"
 
-# define SI 32
+# define TILE 32
 
 typedef struct s_game
 {
 	mlx_t			*mlx;
 	char			**map;
-	char			**mapcopy;
-	int				row;
-	int				index;
+	int				y_index;
+	int				x_index;
 	int				player_count;
 	int				collect_count;
 	int				move_counter;
@@ -43,10 +42,9 @@ typedef struct s_game
 	mlx_image_t		*exit;
 }			t_game;
 
+char	**read_map(char *argv);
 void	check_rows(t_game *game);
-void	read_map(char *argv, t_game *game);
-void	fill_map(t_game *game, int x, int y);
-void	find_player(t_game *game, int *player_row, int *player_index);
+void	fill_map(char **map, int x, int y);
 void	count_props(t_game *game);
 
 void	check_mapname(char *mapname);
@@ -54,16 +52,16 @@ void	check_args(int argc);
 void	check_props(t_game *game);
 void	check_borders(t_game *game);
 void	check_shape(t_game *game);
-void	check_win(t_game *game);
-void	validate_map(t_game *game);
+void	check_win(t_game *game, char *argv);
+void	validate_map(t_game *game, char *argv);
 
-void	init_game(t_game *game);
+void	init_game(t_game *game, char *argv);
+int	find_player_y(t_game *game);
+int	find_player_x(t_game *game);
+int	init_y(t_game *game);
+int	init_x(t_game *game);
 void	init_textures(t_game *game);
 
-void	render_walls(t_game *game, int row, int index);
-void	render_exit(t_game *game, int row, int index);
-void	render_player(t_game *game, int row, int index);
-void	render_collectibles(t_game *game, int row, int index);
 void	render_map(t_game *game);
 
 void	key_comms(mlx_key_data_t paramkey, t_game *game);

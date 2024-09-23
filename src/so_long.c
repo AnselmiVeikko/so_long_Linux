@@ -29,10 +29,10 @@ int	main(int argc, char *argv[])
 	game = malloc(sizeof(t_game));
 	if (!game)
 		error_exit("[ERROR]: Game malloc has failed!");
-	read_map(argv[1], game);
-	init_game(game);
-	validate_map(game);
-	game->mlx = mlx_init(game->index * SI, game->row * SI, "Mordor42", false);
+	init_game(game, argv[1]);
+	ft_printf("c_count = %d, p_count = %d\n", game->collect_count, game->player_count);
+	validate_map(game, argv[1]);
+	game->mlx = mlx_init(game->x_index * TILE, game->y_index * TILE, "Mordor42", false);
 	init_textures(game);
 	render_map(game);
 	mlx_key_hook(game->mlx, (mlx_keyfunc)key_comms, game);

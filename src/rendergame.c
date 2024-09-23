@@ -12,30 +12,30 @@
 
 #include "../include/so_long.h"
 
-void	render_walls(t_game *game, int row, int index)
+static void	render_wall(t_game *game, int y_index, int x_index)
 {
-	mlx_image_to_window(game->mlx, game->floor, index * SI, row * SI);
-	mlx_image_to_window(game->mlx, game->wall, index * SI, row * SI);
+	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
+	mlx_image_to_window(game->mlx, game->wall, x_index * TILE, y_index * TILE);
 }
 
-void	render_exit(t_game *game, int row, int index)
+static void	render_exit(t_game *game, int y_index, int x_index)
 {
-	mlx_image_to_window(game->mlx, game->floor, index * SI, row * SI);
-	mlx_image_to_window(game->mlx, game->exit, index * SI, row * SI);
+	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
+	mlx_image_to_window(game->mlx, game->exit, x_index * TILE, y_index * TILE);
 }
 
-void	render_player(t_game *game, int row, int index)
+static void	render_player(t_game *game, int y_index, int x_index)
 {
-	mlx_image_to_window(game->mlx, game->floor, index * SI, row * SI);
-	mlx_image_to_window(game->mlx, game->player, index * SI, row * SI);
-	game->player_y = row;
-	game->player_x = index;
+	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
+	mlx_image_to_window(game->mlx, game->player, x_index * TILE, y_index * TILE);
+	game->player_y = y_index;
+	game->player_x = x_index;
 }
 
-void	render_collectibles(t_game *game, int row, int index)
+static void	render_collectible(t_game *game, int y_index, int x_index)
 {	
-	mlx_image_to_window(game->mlx, game->floor, index * SI, row * SI);
-	mlx_image_to_window(game->mlx, game->collectible, index * SI, row * SI);
+	mlx_image_to_window(game->mlx, game->floor, x_index * TILE, y_index * TILE);
+	mlx_image_to_window(game->mlx, game->collectible, x_index * TILE, y_index * TILE);
 }
 
 void	render_map(t_game *game)
@@ -50,15 +50,15 @@ void	render_map(t_game *game)
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == '1')
-				render_walls(game, i, j);
+				render_wall(game, i, j);
 			else if (game->map[i][j] == 'E')
 				render_exit(game, i, j);
 			else if (game->map[i][j] == 'C')
-				render_collectibles(game, i, j);
+				render_collectible(game, i, j);
 			else if (game->map[i][j] == 'P')
 				render_player(game, i, j);
 			else
-				mlx_image_to_window(game->mlx, game->floor, j * SI, i * SI);
+				mlx_image_to_window(game->mlx, game->floor, j * TILE, i * TILE);
 			j++;
 		}
 		i++;

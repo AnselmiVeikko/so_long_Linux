@@ -36,19 +36,13 @@ void	check_borders(t_game *game)
 	int	i;
 	int	j;
 
-	while (game->map[game->row])
-	{
-		while (game->map[game->row][game->index])
-			game->index++;
-		game->row++;
-	}
 	i = 0;
 	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (i == 0 || i == game->row - 1 || j == 0 || j == game->index -1)
+			if (i == 0 || i == game->y_index - 1 || j == 0 || j == game->x_index -1)
 			{
 				if (game->map[i][j] != '1')
 					error_exit("[MAP ERROR]: Invalid map borders!\n");
@@ -74,23 +68,19 @@ void	check_shape(t_game *game)
 	}
 }
 
-void	check_win(t_game *game)
+void	check_win(t_game *game, char *argv)
 {
 	int	i;
-	int	player_row;
-	int	player_index;
+	char	**map;
 
-	player_row = 0;
-	player_index = 0;
-	find_player(game, &player_row, &player_index);
-	fill_map(game, player_row, player_index);
+	map = read_map(argv);
+	fill_map(map, game->player_y, game->player_x);
 	i = 0;
-	while (game->mapcopy[i])
+	while (map[i])
 	{
-		if (ft_strchr(game->mapcopy[i], 'C')
-			|| ft_strchr(game->mapcopy[i], 'E'))
+		if (ft_strchr(map[i], 'C')
+			|| ft_strchr(map[i], 'E'))
 			error_exit("[ERROR]: Map is invalid! Props remain after fill!\n");
 		i++;
 	}
-	free_map(game->mapcopy);
 }
