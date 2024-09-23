@@ -35,17 +35,14 @@ char	**read_map(char *argv)
 	free (row);
 	close(read_map);
 	map = ft_split(map_buffer, '\n');
+	free(map_buffer);
 	return (map);
 }
 
 void	fill_map(char **map, int y, int x)
 {
-	if (map[y][x] == '1'
-			|| map[y][x] == 'X')
+	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
-	if (map[y][x] == 'E'
-			|| map[y][x] == 'C')
-		map[y][x] = '0';
 	map[y][x] = 'X';
 	fill_map(map, y - 1, x);
 	fill_map(map, y + 1, x);

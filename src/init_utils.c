@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-int	init_y(t_game *game)
+int	count_y(t_game *game)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	init_y(t_game *game)
 	return (i);
 }
 
-int	init_x(t_game *game)
+int	count_x(t_game *game)
 {
 	int	i;
 
@@ -78,6 +78,9 @@ void	count_props(t_game *game)
 	int	j;
 
 	i = 0;
+	game->player_count = 0;
+	game->collect_count = 0;
+	game->exit_count = 0;
 	while (game->map[i])
 	{
 		j = 0;

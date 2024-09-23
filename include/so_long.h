@@ -56,10 +56,10 @@ void	check_win(t_game *game, char *argv);
 void	validate_map(t_game *game, char *argv);
 
 void	init_game(t_game *game, char *argv);
-int	find_player_y(t_game *game);
-int	find_player_x(t_game *game);
-int	init_y(t_game *game);
-int	init_x(t_game *game);
+int		find_player_y(t_game *game);
+int		find_player_x(t_game *game);
+int		count_y(t_game *game);
+int		count_x(t_game *game);
 void	init_textures(t_game *game);
 
 void	render_map(t_game *game);

@@ -24,7 +24,10 @@ void	check_map(t_game *game)
 		while (game->map[i][j])
 		{
 			if (!ft_strchr("1PCE0", game->map[i][j]))
+			{
+				free_map(game->map);
 				error_exit("[MAP ERROR]: Invalid characters in the map file!");
+			}
 			j++;
 		}
 		i++;
@@ -33,9 +36,9 @@ void	check_map(t_game *game)
 
 void	validate_map(t_game *game, char *argv)
 {
+	check_map(game);
 	check_props(game);
 	check_borders(game);
 	check_shape(game);
 	check_win(game, argv);
-	check_map(game);
 }

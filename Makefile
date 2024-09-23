@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS	:= -Wextra -Wall -Werror -g -Wunreachable-code -Ofast
+CFLAGS	:= -Wextra -Wall -Werror -g -Wunreachable-code
 LIBMLX	:= ./lib/MLX42
 LIBFT   := ./lib/libft
 
@@ -12,7 +12,7 @@ OBJS	:= ${SRCS:.c=.o}
 all: libmlx libft $(NAME)
 
 libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4 
 
 libft:
 	@make -C $(LIBFT)
@@ -21,7 +21,7 @@ libft:
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJS)

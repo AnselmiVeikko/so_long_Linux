@@ -31,7 +31,7 @@ int	main(int argc, char *argv[])
 		error_exit("[ERROR]: Game malloc has failed!");
 	init_game(game, argv[1]);
 	validate_map(game, argv[1]);
-	game->mlx = mlx_init(game->x_size * TILE, game->y_size * TILE, "hi", false);
+	game->mlx = mlx_init(game->x_size * TILE, game->y_size * TILE, "SL", false);
 	init_textures(game);
 	render_map(game);
 	mlx_key_hook(game->mlx, (mlx_keyfunc)key_comms, game);

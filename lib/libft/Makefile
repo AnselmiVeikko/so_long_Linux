@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror ${HEADERS} -fPIC
 CRLIB = ar rcs
 

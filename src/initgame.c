@@ -15,13 +15,13 @@
 void	init_game(t_game *game, char *argv)
 {
 	game->map = read_map(argv);
-	game->y_size = init_y(game);
-	game->x_size = init_x(game);
+	game->y_size = count_y(game);
+	game->x_size = count_x(game);
 	count_props(game);
-	game->move_counter = 0;
-	game->exit_game = 0;
 	game->player_y = find_player_y(game);
 	game->player_x = find_player_x(game);
+	game->move_counter = 0;
+	game->exit_game = 0;
 }
 
 void	init_textures(t_game *game)
