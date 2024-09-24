@@ -34,8 +34,10 @@ char	*parse_map(char	*argv)
 	while (line)
 	{
 		map_buffer = gnl_strjoin(map_buffer, line);
+		free (line);
 		line = get_next_line(read_map);
 	}
+	free (line);
 	return (map_buffer);
 }
 

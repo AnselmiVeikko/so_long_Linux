@@ -12,8 +12,13 @@
 
 #include "../include/so_long.h"
 
-void	init_game(t_game *game, char *argv)
+t_game	*init_game(char *argv)
 {
+	t_game	*game;
+
+	game = malloc(sizeof(t_game));
+	if (!game)
+		error_exit("Error\nGame malloc has failed");
 	game->map = split_map(argv);
 	if (!game->map)
 	{
@@ -26,6 +31,7 @@ void	init_game(t_game *game, char *argv)
 	game->player_y = find_player_y(game);
 	game->player_x = find_player_x(game);
 	game->move_counter = 0;
+	return (game);
 }
 
 void	init_textures(t_game *game)

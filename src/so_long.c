@@ -65,10 +65,7 @@ int	main(int argc, char *argv[])
 	check_args(argc);
 	check_mapname(argv[1]);
 	check_chars(argv[1]);
-	game = malloc(sizeof(t_game));
-	if (!game)
-		error_exit("Error\nGame malloc has failed!");
-	init_game(game, argv[1]);
+	game = init_game(argv[1]);
 	check_map(game, argv[1]);
 	game->mlx = mlx_init(game->x_size * TILE, game->y_size * TILE, "SL", false);
 	init_textures(game);
