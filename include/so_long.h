@@ -31,7 +31,6 @@ typedef struct s_game
 	int				collect_count;
 	int				move_counter;
 	int				exit_count;
-	int				exit_game;
 	int				player_x;
 	int				player_y;
 	mlx_texture_t	*temp;
@@ -43,33 +42,33 @@ typedef struct s_game
 }			t_game;
 
 char	**copy_map(char *argv);
-void	check_rows(t_game *game);
 void	fill_map(char **map, int x, int y);
-void	count_props(t_game *game);
 
 void	check_mapname(char *mapname);
+void	check_chars(t_game *game);
 void	check_args(int argc);
 void	check_props(t_game *game);
 void	check_borders(t_game *game);
 void	check_shape(t_game *game);
 void	check_win(t_game *game, char *argv);
-void	validate_map(t_game *game, char *argv);
+void	check_map(t_game *game, char *argv);
 
-void	init_game(t_game *game, char *argv);
 int		find_player_y(t_game *game);
 int		find_player_x(t_game *game);
 int		count_y(t_game *game);
 int		count_x(t_game *game);
-void	init_textures(t_game *game);
+void	count_props(t_game *game);
+void	init_game(t_game *game, char *argv);
 
+void	init_textures(t_game *game);
 void	render_map(t_game *game);
 
 void	move_player(t_game *game, int move_y, int move_x);
 void	key_comms(mlx_key_data_t paramkey, t_game *game);
 
+int		ft_notchar(char *str, char c);
 void	error_exit(char *str);
 void	free_map(char **map);
 void	close_game(t_game *game);
-int		ft_notchar(char *str, char c);
 
 #endif

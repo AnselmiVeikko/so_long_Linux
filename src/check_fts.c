@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkmap.c                                         :+:      :+:    :+:   */
+/*   check_fts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +18,7 @@ void	check_mapname(char *mapname)
 
 	name_len = ft_strlen(mapname);
 	if (!ft_strnstr(&mapname[name_len - 4], ".ber", 5))
-		error_exit("[ERROR]: Map name is invalid!");
+		error_exit("Error\nMap name is invalid!\n");
 }
 
 void	check_props(t_game *game)
@@ -35,7 +35,7 @@ void	check_props(t_game *game)
 	if (error == 1)
 	{
 		free_map(game->map);
-		error_exit("[MAP ERROR]: Invalid amount of props/players!\n");
+		error_exit("Error\nInvalid amount of props/players!\n");
 	}
 }
 
@@ -61,7 +61,7 @@ void	check_borders(t_game *game)
 	if (error == 1)
 	{
 		free_map(game->map);
-		error_exit("[MAP ERROR]: Invalid map borders!\n");
+		error_exit("Error\nInvalid map borders!\n");
 	}
 }
 
@@ -75,7 +75,7 @@ void	check_shape(t_game *game)
 		if (ft_strlen(game->map[0]) != ft_strlen(game->map[i]))
 		{
 			free_map(game->map);
-			error_exit("[MAP ERROR]: Map is not rectangular... seriously?\n");
+			error_exit("Error\nMap is not rectangular... seriously?\n");
 		}
 		i++;
 	}
@@ -95,7 +95,7 @@ void	check_win(t_game *game, char *argv)
 		{
 			free_map(game->map);
 			free_map(map);
-			error_exit("[ERROR]: Map is invalid! Props remain after fill!\n");
+			error_exit("Error\nMap is invalid! Props remain after fill!\n");
 		}
 		i++;
 	}

@@ -9,14 +9,14 @@ LIBFT_REPO := git@github.com:AnselmiVeikko/Libft.git
 HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a
 SRCS	:= ./src/utils.c \
-	   ./src/readmap.c \
+	   ./src/copy_map.c \
 	   ./src/so_long.c \
-	   ./src/checkmap.c \
+	   ./src/check_fts.c \
 	   ./src/initgame.c \
 	   ./src/init_utils.c \
 	   ./src/move_hooks.c \
 	   ./src/rendergame.c \
-	   ./src/validatemap.c \
+	   ./src/check_map.c \
 
 OBJS	:= ${SRCS:.c=.o}
 

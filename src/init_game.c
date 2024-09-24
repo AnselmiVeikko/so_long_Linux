@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initgame.c                                         :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -21,7 +21,6 @@ void	init_game(t_game *game, char *argv)
 	game->player_y = find_player_y(game);
 	game->player_x = find_player_x(game);
 	game->move_counter = 0;
-	game->exit_game = 0;
 }
 
 void	init_textures(t_game *game)

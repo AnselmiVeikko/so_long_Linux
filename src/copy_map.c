@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readmap.c                                          :+:      :+:    :+:   */
+/*   copy_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,10 +22,10 @@ char	**copy_map(char *argv)
 	read_map = open(argv, O_RDONLY);
 	map_buffer = ft_strdup("");
 	if (read_map == -1)
-		error_exit("[ERROR]: The file is invalid or empty");
+		error_exit("Error\n The file is invalid or empty");
 	row = get_next_line(read_map);
 	if (!row)
-		error_exit("[ERROR]: File is Empty!");
+		error_exit("Error\n File is Empty!");
 	while (row)
 	{
 		map_buffer = ft_strjoin(map_buffer, row);

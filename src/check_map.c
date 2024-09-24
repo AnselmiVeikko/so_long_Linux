@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validatemap.c                                      :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-void	check_map(t_game *game)
+void	check_chars(t_game *game)
 {
 	int	i;
 	int	j;
@@ -26,7 +26,7 @@ void	check_map(t_game *game)
 			if (!ft_strchr("1PCE0", game->map[i][j]))
 			{
 				free_map(game->map);
-				error_exit("[MAP ERROR]: Invalid characters in the map file!");
+				error_exit("Error\nInvalid characters in the map file!\n");
 			}
 			j++;
 		}
@@ -34,9 +34,9 @@ void	check_map(t_game *game)
 	}
 }
 
-void	validate_map(t_game *game, char *argv)
+void	check_map(t_game *game, char *argv)
 {
-	check_map(game);
+	check_chars(game);
 	check_props(game);
 	check_borders(game);
 	check_shape(game);
