@@ -50,13 +50,15 @@ void	check_borders(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (i == 0 || i == game->y_size - 1 
+			if (i == 0 || i == game->y_size - 1
 				|| j == 0 || j == game->x_size - 1)
+			{
 				if (game->map[i][j] != '1')
 				{
 					free_map(game->map);
 					error_exit("[MAP ERROR]: Invalid borders!\n");
 				}
+			}
 			j++;
 		}
 		i++;
@@ -65,14 +67,12 @@ void	check_borders(t_game *game)
 
 void	check_shape(t_game *game)
 {
-	size_t	row_len;
 	int		i;
 
 	i = 0;
-	row_len = ft_strlen(game->map[i]);
 	while (game->map[i])
 	{
-		if (row_len != ft_strlen(game->map[i]))
+		if (ft_strlen(game->map[0]) != ft_strlen(game->map[i]))
 		{
 			free_map(game->map);
 			error_exit("[MAP ERROR]: Map is not rectangular... seriously?\n");
