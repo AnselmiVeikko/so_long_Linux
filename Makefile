@@ -4,21 +4,50 @@ CFLAGS	:= -Wextra -Wall -Werror -g -Wunreachable-code
 LIBMLX	:= ./lib/MLX42
 MLX_REPO := https://github.com/codam-coding-college/MLX42.git
 LIBFT   := ./lib/libft
+LIBFT_REPO := git@github.com:AnselmiVeikko/Libft.git 
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a
-SRCS	:= $(shell find ./src -iname "*.c")
+SRCS	:= ./src/utils.c \
+	   ./src/readmap.c \
+	   ./src/so_long.c \
+	   ./src/checkmap.c \
+	   ./src/initgame.c \
+	   ./src/init_utils.c \
+	   ./src/move_hooks.c \
+	   ./src/rendergame.c \
+	   ./src/validatemap.c \
+
 OBJS	:= ${SRCS:.c=.o}
+
+YELLOW := \033[0;33m
+RED    = \033[0;31m
+NC := \033[0m
 
 all: libmlx libft $(NAME)
 
-$(LIBMLX):
-	@git clone $(MLX_REPO) $(LIBMLX)
+mkd_lib:
+	@if [ ! -d ./lib ]; then \
+		mkdir lib; \
+		printf "$(YELLOW)[Directory]: Lib has been created.$(NC)\n"; \
+	fi
 
-libmlx:
-	@cmake -S $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -- -j4 
+clone_mlx: mkd_lib
+	@if [ ! -d $(LIBMLX) ]; then \
+		git clone $(MLX_REPO) $(LIBMLX); \
+	fi
 
-libft:
+clone_libft: mkd_lib
+	@if [ ! -d $(LIBFT) ]; then \
+		git clone $(LIBFT_REPO) $(LIBFT); \
+	fi
+
+libmlx: clone_mlx
+	@if [ ! -f $(LIBMLX)/build/libmlx42.a ]; then \
+		cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4 ; \
+	fi
+
+libft: clone_libft
 	@make -C $(LIBFT)
 
 %.o: %.c
@@ -34,7 +63,10 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@make -C $(LIBFT) fclean
+	@rm -rf ./lib
+	@printf "$(RED)[Directory]: ./lib/MLX42 has been removed.$(NC)\n"
+	@printf "$(RED)[Directory]: ./lib/Libft has been removed.$(NC)\n"
+	@printf "$(YELLOW)[Directory]: Lib has been removed.$(NC)\n"
 
 re: clean all
 
