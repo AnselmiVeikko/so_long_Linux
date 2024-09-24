@@ -2,6 +2,7 @@ NAME = so_long
 CC = cc
 CFLAGS	:= -Wextra -Wall -Werror -g -Wunreachable-code
 LIBMLX	:= ./lib/MLX42
+MLX_REPO := https://github.com/codam-coding-college/MLX42.git
 LIBFT   := ./lib/libft
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
@@ -10,6 +11,9 @@ SRCS	:= $(shell find ./src -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx libft $(NAME)
+
+$(LIBMLX):
+	git clone $(MLX_REPO) $(LIBMLX)
 
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4 
