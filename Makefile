@@ -13,10 +13,10 @@ OBJS	:= ${SRCS:.c=.o}
 all: libmlx libft $(NAME)
 
 $(LIBMLX):
-	git clone $(MLX_REPO) $(LIBMLX)
+	@git clone $(MLX_REPO) $(LIBMLX)
 
 libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4 
+	@cmake -S $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -- -j4 
 
 libft:
 	@make -C $(LIBFT)
