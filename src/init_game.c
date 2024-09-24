@@ -15,6 +15,11 @@
 void	init_game(t_game *game, char *argv)
 {
 	game->map = split_map(argv);
+	if (!game->map)
+	{
+		free(game);
+		error_exit("Error\nMap file is invalid or empty!\n");
+	}
 	game->y_size = count_y(game);
 	game->x_size = count_x(game);
 	count_props(game);

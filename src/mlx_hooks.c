@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_hooks.c                                       :+:      :+:    :+:   */
+/*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-void	move_player(t_game *game, int move_y, int move_x)
+static	void	move_player(t_game *game, int move_y, int move_x)
 {
 	if ((game->map[move_y][move_x] != '1')
 			&& (game->map[move_y][move_x] != 'E'

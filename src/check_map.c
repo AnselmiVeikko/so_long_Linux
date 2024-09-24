@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-void	check_props(t_game *game)
+static	void	check_props(t_game *game)
 {
 	int	error;
 
@@ -26,11 +26,12 @@ void	check_props(t_game *game)
 	if (error == 1)
 	{
 		free_map(game->map);
+		free(game);
 		error_exit("Error\nInvalid amount of props/players!\n");
 	}
 }
 
-void	check_borders(t_game *game)
+static	void	check_borders(t_game *game)
 {
 	int	i;
 	int	error;
@@ -52,11 +53,12 @@ void	check_borders(t_game *game)
 	if (error == 1)
 	{
 		free_map(game->map);
+		free(game);
 		error_exit("Error\nInvalid map borders!\n");
 	}
 }
 
-void	check_shape(t_game *game)
+static	void	check_shape(t_game *game)
 {
 	int		i;
 
@@ -66,13 +68,14 @@ void	check_shape(t_game *game)
 		if (ft_strlen(game->map[0]) != ft_strlen(game->map[i]))
 		{
 			free_map(game->map);
+			free (game);
 			error_exit("Error\nMap is not rectangular... seriously?\n");
 		}
 		i++;
 	}
 }
 
-void	check_win(t_game *game, char *argv)
+static	void	check_win(t_game *game, char *argv)
 {
 	int		i;
 	char	**map;
@@ -85,6 +88,7 @@ void	check_win(t_game *game, char *argv)
 		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
 		{
 			free_map(game->map);
+			free(game);
 			free_map(map);
 			error_exit("Error\nMap is invalid! Props remain after fill!\n");
 		}
@@ -95,8 +99,8 @@ void	check_win(t_game *game, char *argv)
 
 void	check_map(t_game *game, char *argv)
 {
-	check_props(game);
-	check_borders(game);
 	check_shape(game);
+	check_borders(game);
+	check_props(game);
 	check_win(game, argv);
 }

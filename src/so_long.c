@@ -12,12 +12,50 @@
 
 #include "../include/so_long.h"
 
-void	check_args(int argc)
+static	void	check_args(int argc)
 {
 	if (argc > 2)
 		error_exit("Error\nToo many arguments! Only one argument expected.");
 	if (argc < 2)
 		error_exit("Error\nToo few arguments! One argument expected.");
+}
+
+static	void	check_mapname(char *str)
+{
+	size_t	name_len;
+
+	name_len = ft_strlen(str);
+	if (!ft_strnstr(&str[name_len - 4], ".ber", 5))
+		error_exit("Error\nMap name is invalid!\n");
+}
+
+static	void	check_chars(char *str)
+{
+	int		i;
+	int		error;
+	char	*map;
+
+	map = parse_map(str);
+	if (!map)
+		error_exit("Error\nMap file is invalid or empty");
+	i = 0;
+	while (map[i])
+	{
+		error = 1;
+		if (map[i] == 'C' || map[i] == 'P')
+			error = 0;
+		if (map[i] == 'E' || map[i] == '1')
+			error = 0;
+		if (map[i] == '0' || map[i] == '\n')
+			error = 0;
+		if (error == 1)
+		{
+			free(map);
+			error_exit("Error\nInvalid characters in the map file");
+		}
+		i++;
+	}
+	free(map);
 }
 
 int	main(int argc, char *argv[])
@@ -26,6 +64,7 @@ int	main(int argc, char *argv[])
 
 	check_args(argc);
 	check_mapname(argv[1]);
+	check_chars(argv[1]);
 	game = malloc(sizeof(t_game));
 	if (!game)
 		error_exit("Error\nGame malloc has failed!");

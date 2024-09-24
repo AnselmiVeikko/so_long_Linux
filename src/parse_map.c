@@ -12,40 +12,44 @@
 
 #include "../include/so_long.h"
 
-void	check_mapname(char *mapname)
+char	*parse_map(char	*argv)
 {
-	size_t	name_len;
+	int		read_map;
+	char	*line;
+	char	*map_buffer;
 
-	name_len = ft_strlen(mapname);
-	if (!ft_strnstr(&mapname[name_len - 4], ".ber", 5))
-		error_exit("Error\nMap name is invalid!\n");
+	map_buffer = ft_calloc(1, 1);
+	read_map = open(argv, O_RDONLY);
+	if (read_map == -1)
+	{
+		free(map_buffer);
+		return (NULL);
+	}
+	line = get_next_line(read_map);
+	if (!line)
+	{
+		free(map_buffer);
+		return (NULL);
+	}
+	while (line)
+	{
+		map_buffer = gnl_strjoin(map_buffer, line);
+		line = get_next_line(read_map);
+	}
+	return (map_buffer);
 }
 
 char	**split_map(char *argv)
 {
-	int		read_map;
-	char	*row;
-	char	*map_buffer;
-	char	**map;
+	char	*map;
+	char	**split_map;
 
-	read_map = open(argv, O_RDONLY);
-	map_buffer = ft_strdup("");
-	if (read_map == -1)
-		error_exit("Error\n The file is invalid or empty");
-	row = get_next_line(read_map);
-	if (!row)
-		error_exit("Error\n File is Empty!");
-	while (row)
-	{
-		map_buffer = ft_strjoin(map_buffer, row);
-		free (row);
-		row = get_next_line(read_map);
-	}
-	free (row);
-	close(read_map);
-	map = ft_split(map_buffer, '\n');
-	free(map_buffer);
-	return (map);
+	map = parse_map(argv);
+	if (!map)
+		return (NULL);
+	split_map = ft_split(map, '\n');
+	free(map);
+	return (split_map);
 }
 
 void	fill_map(char **map, int y, int x)
