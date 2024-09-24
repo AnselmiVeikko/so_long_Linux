@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-char	**read_map(char *argv)
+char	**copy_map(char *argv)
 {
 	int		read_map;
 	char	*row;

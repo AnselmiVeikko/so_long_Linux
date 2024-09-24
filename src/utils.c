@@ -33,6 +33,20 @@ void	free_map(char **map)
 	free (map);
 }
 
+int	ft_notchar(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	close_game(t_game *game)
 {
 	mlx_delete_image(game->mlx, game->exit);

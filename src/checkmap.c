@@ -42,26 +42,26 @@ void	check_props(t_game *game)
 void	check_borders(t_game *game)
 {
 	int	i;
-	int	j;
+	int	error;
 
 	i = 0;
+	error = 0;
 	while (game->map[i])
 	{
-		j = 0;
-		while (game->map[i][j])
+		if (i == 0 || i == game->y_size - 1)
 		{
-			if (i == 0 || i == game->y_size - 1
-				|| j == 0 || j == game->x_size - 1)
-			{
-				if (game->map[i][j] != '1')
-				{
-					free_map(game->map);
-					error_exit("[MAP ERROR]: Invalid borders!\n");
-				}
-			}
-			j++;
+			if (ft_notchar(game->map[i], '1'))
+				error = 1;
 		}
+		else if (game->map[i][0] != '1'
+			|| game->map[i][game->x_size - 1] != '1')
+			error = 1;
 		i++;
+	}
+	if (error == 1)
+	{
+		free_map(game->map);
+		error_exit("[MAP ERROR]: Invalid map borders!\n");
 	}
 }
 
@@ -86,13 +86,12 @@ void	check_win(t_game *game, char *argv)
 	int		i;
 	char	**map;
 
-	map = read_map(argv);
+	map = copy_map(argv);
 	fill_map(map, game->player_y, game->player_x);
 	i = 0;
 	while (map[i])
 	{
-		if (ft_strchr(map[i], 'C')
-			|| ft_strchr(map[i], 'E'))
+		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
 		{
 			free_map(game->map);
 			free_map(map);

@@ -42,7 +42,7 @@ typedef struct s_game
 	mlx_image_t		*exit;
 }			t_game;
 
-char	**read_map(char *argv);
+char	**copy_map(char *argv);
 void	check_rows(t_game *game);
 void	fill_map(char **map, int x, int y);
 void	count_props(t_game *game);
@@ -70,5 +70,6 @@ void	key_comms(mlx_key_data_t paramkey, t_game *game);
 void	error_exit(char *str);
 void	free_map(char **map);
 void	close_game(t_game *game);
+int		ft_notchar(char *str, char c);
 
 #endif

@@ -14,7 +14,7 @@
 
 void	init_game(t_game *game, char *argv)
 {
-	game->map = read_map(argv);
+	game->map = copy_map(argv);
 	game->y_size = count_y(game);
 	game->x_size = count_x(game);
 	count_props(game);
