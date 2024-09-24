@@ -12,31 +12,89 @@
 
 #include "../include/so_long.h"
 
-void	check_chars(t_game *game)
+void	check_props(t_game *game)
+{
+	int	error;
+
+	error = 0;
+	if (game->player_count != 1)
+		error = 1;
+	if (game->exit_count != 1)
+		error = 1;
+	if (game->collect_count < 1)
+		error = 1;
+	if (error == 1)
+	{
+		free_map(game->map);
+		error_exit("Error\nInvalid amount of props/players!\n");
+	}
+}
+
+void	check_borders(t_game *game)
 {
 	int	i;
-	int	j;
+	int	error;
+
+	i = 0;
+	error = 0;
+	while (game->map[i])
+	{
+		if (i == 0 || i == game->y_size - 1)
+		{
+			if (ft_notchar(game->map[i], '1'))
+				error = 1;
+		}
+		else if (game->map[i][0] != '1'
+			|| game->map[i][game->x_size - 1] != '1')
+			error = 1;
+		i++;
+	}
+	if (error == 1)
+	{
+		free_map(game->map);
+		error_exit("Error\nInvalid map borders!\n");
+	}
+}
+
+void	check_shape(t_game *game)
+{
+	int		i;
 
 	i = 0;
 	while (game->map[i])
 	{
-		j = 0;
-		while (game->map[i][j])
+		if (ft_strlen(game->map[0]) != ft_strlen(game->map[i]))
 		{
-			if (!ft_strchr("1PCE0", game->map[i][j]))
-			{
-				free_map(game->map);
-				error_exit("Error\nInvalid characters in the map file!\n");
-			}
-			j++;
+			free_map(game->map);
+			error_exit("Error\nMap is not rectangular... seriously?\n");
 		}
 		i++;
 	}
 }
 
+void	check_win(t_game *game, char *argv)
+{
+	int		i;
+	char	**map;
+
+	map = split_map(argv);
+	fill_map(map, game->player_y, game->player_x);
+	i = 0;
+	while (map[i])
+	{
+		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
+		{
+			free_map(game->map);
+			free_map(map);
+			error_exit("Error\nMap is invalid! Props remain after fill!\n");
+		}
+		i++;
+	}
+	free_map (map);
+}
+
 void	check_map(t_game *game, char *argv)
 {
-	check_chars(game);
 	check_props(game);
 	check_borders(game);
 	check_shape(game);

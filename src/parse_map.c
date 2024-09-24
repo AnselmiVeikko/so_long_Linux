@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_map.c                                         :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahentton <ahentton@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,16 @@
 
 #include "../include/so_long.h"
 
-char	**copy_map(char *argv)
+void	check_mapname(char *mapname)
+{
+	size_t	name_len;
+
+	name_len = ft_strlen(mapname);
+	if (!ft_strnstr(&mapname[name_len - 4], ".ber", 5))
+		error_exit("Error\nMap name is invalid!\n");
+}
+
+char	**split_map(char *argv)
 {
 	int		read_map;
 	char	*row;

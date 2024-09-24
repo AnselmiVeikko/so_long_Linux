@@ -41,11 +41,10 @@ typedef struct s_game
 	mlx_image_t		*exit;
 }			t_game;
 
-char	**copy_map(char *argv);
+char	**split_map(char *argv);
 void	fill_map(char **map, int x, int y);
 
 void	check_mapname(char *mapname);
-void	check_chars(t_game *game);
 void	check_args(int argc);
 void	check_props(t_game *game);
 void	check_borders(t_game *game);
