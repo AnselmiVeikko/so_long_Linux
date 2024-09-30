@@ -50,7 +50,7 @@ int		find_player_y(char **map);
 int		find_player_x(char **map);
 int		count_y(char **map);
 int		count_x(char **map);
-void	count_props(t_game *game);
+int		count_prop(char **map, char c);
 t_game	*init_game(char *argv);
 
 void	init_textures(t_game *game);
