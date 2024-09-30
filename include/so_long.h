@@ -43,7 +43,6 @@ typedef struct s_game
 
 char	*parse_map(char *argv);
 char	**split_map(char *argv);
-void	fill_map(char **map, int x, int y);
 
 void	check_map(t_game *game, char *argv);
 
@@ -63,5 +62,6 @@ int		ft_notchar(char *str, char c);
 void	error_exit(char *str);
 void	free_map(char **map);
 void	close_game(t_game *game);
+void	fill_map(char **map, int x, int y);
 
 #endif
