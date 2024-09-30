@@ -13,6 +13,7 @@ SRCS	:= ./src/utils.c \
 	   ./src/so_long.c \
 	   ./src/init_game.c \
 	   ./src/init_utils.c \
+	   ./src/init_textures.c \
 	   ./src/mlx_hooks.c \
 	   ./src/render_game.c \
 	   ./src/check_map.c \
