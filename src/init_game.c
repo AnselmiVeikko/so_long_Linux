@@ -29,7 +29,9 @@ t_game	*init_game(char *argv)
 	game->x_size = count_x(game->map);
 	game->player_y = find_player_y(game->map);
 	game->player_x = find_player_x(game->map);
-	count_props(game);
+	game->collect_count = count_prop(game->map, 'C');
+	game->player_count = count_prop(game->map, 'P');
+	game->exit_count = count_prop(game->map, 'E');
 	game->move_counter = 0;
 	return (game);
 }

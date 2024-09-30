@@ -72,28 +72,24 @@ int	find_player_x(char **map)
 	return (0);
 }
 
-void	count_props(t_game *game)
+int	count_prop(char **map, char c)
 {
 	int	i;
 	int	j;
+	int	count;
 
 	i = 0;
-	game->player_count = 0;
-	game->collect_count = 0;
-	game->exit_count = 0;
-	while (game->map[i])
+	count = 0;
+	while (map[i])
 	{
 		j = 0;
-		while (game->map[i][j])
+		while (map[i][j])
 		{
-			if (game->map[i][j] == 'P')
-				game->player_count++;
-			if (game->map[i][j] == 'C')
-				game->collect_count++;
-			if (game->map[i][j] == 'E')
-				game->exit_count++;
+			if (map[i][j] == c)
+				count++;
 			j++;
 		}
 		i++;
 	}
+	return (count);
 }

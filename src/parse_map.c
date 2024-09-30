@@ -53,14 +53,3 @@ char	**split_map(char *argv)
 	free(map);
 	return (split_map);
 }
-
-void	fill_map(char **map, int y, int x)
-{
-	if (map[y][x] == '1' || map[y][x] == 'X')
-		return ;
-	map[y][x] = 'X';
-	fill_map(map, y - 1, x);
-	fill_map(map, y + 1, x);
-	fill_map(map, y, x - 1);
-	fill_map(map, y, x + 1);
-}

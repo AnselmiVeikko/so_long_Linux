@@ -47,6 +47,17 @@ int	ft_notchar(char *str, char c)
 	return (0);
 }
 
+void	fill_map(char **map, int y, int x)
+{
+	if (map[y][x] == '1' || map[y][x] == 'X')
+		return ;
+	map[y][x] = 'X';
+	fill_map(map, y - 1, x);
+	fill_map(map, y + 1, x);
+	fill_map(map, y, x - 1);
+	fill_map(map, y, x + 1);
+}
+
 void	close_game(t_game *game)
 {
 	mlx_delete_image(game->mlx, game->exit);
