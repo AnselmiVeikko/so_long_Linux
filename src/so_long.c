@@ -37,7 +37,7 @@ static	void	check_chars(char *str)
 
 	map = parse_map(str);
 	if (!map)
-		error_exit("Error\nMap file is invalid or empty");
+		error_exit("Error\nMap file is invalid or empty\n");
 	i = 0;
 	while (map[i])
 	{
@@ -51,7 +51,7 @@ static	void	check_chars(char *str)
 		if (error == 1)
 		{
 			free(map);
-			error_exit("Error\nInvalid characters in the map file");
+			error_exit("Error\nInvalid characters in the map file\n");
 		}
 		i++;
 	}

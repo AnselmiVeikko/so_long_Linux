@@ -47,12 +47,12 @@ void	fill_map(char **map, int x, int y);
 
 void	check_map(t_game *game, char *argv);
 
-int		find_player_y(t_game *game);
-int		find_player_x(t_game *game);
-int		count_y(t_game *game);
-int		count_x(t_game *game);
+int		find_player_y(char **map);
+int		find_player_x(char **map);
+int		count_y(char **map);
+int		count_x(char **map);
 void	count_props(t_game *game);
-void	init_game(t_game *game, char *argv);
+t_game	*init_game(char *argv);
 
 void	init_textures(t_game *game);
 void	render_map(t_game *game);

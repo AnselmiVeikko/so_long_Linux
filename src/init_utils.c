@@ -12,38 +12,38 @@
 
 #include "../include/so_long.h"
 
-int	count_y(t_game *game)
+int	count_y(char **map)
 {
 	int	i;
 
 	i = 0;
-	while (game->map[i])
+	while (map[i])
 		i++;
 	return (i);
 }
 
-int	count_x(t_game *game)
+int	count_x(char **map)
 {
 	int	i;
 
 	i = 0;
-	while (game->map[1][i])
+	while (map[1][i])
 		i++;
 	return (i);
 }
 
-int	find_player_y(t_game *game)
+int	find_player_y(char **map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (game->map[i])
+	while (map[i])
 	{
 		j = 0;
-		while (game->map[i][j])
+		while (map[i][j])
 		{
-			if (game->map[i][j] == 'P')
+			if (map[i][j] == 'P')
 				return (i);
 			j++;
 		}
@@ -52,18 +52,18 @@ int	find_player_y(t_game *game)
 	return (0);
 }
 
-int	find_player_x(t_game *game)
+int	find_player_x(char **map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (game->map[i])
+	while (map[i])
 	{
 		j = 0;
-		while (game->map[i][j])
+		while (map[i][j])
 		{
-			if (game->map[i][j] == 'P')
+			if (map[i][j] == 'P')
 				return (j);
 			j++;
 		}

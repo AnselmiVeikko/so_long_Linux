@@ -25,11 +25,11 @@ t_game	*init_game(char *argv)
 		free(game);
 		error_exit("Error\nMap file is invalid or empty!\n");
 	}
-	game->y_size = count_y(game);
-	game->x_size = count_x(game);
+	game->y_size = count_y(game->map);
+	game->x_size = count_x(game->map);
+	game->player_y = find_player_y(game->map);
+	game->player_x = find_player_x(game->map);
 	count_props(game);
-	game->player_y = find_player_y(game);
-	game->player_x = find_player_x(game);
 	game->move_counter = 0;
 	return (game);
 }
