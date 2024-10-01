@@ -81,6 +81,12 @@ static	void	check_win(t_game *game, char *argv)
 	char	**map;
 
 	map = split_map(argv);
+	if (!map)
+	{
+		free_map(game->map);
+		free(game);
+		error_exit("Error\nMap is invalid!");
+	}
 	fill_map(map, game->player_y, game->player_x);
 	i = 0;
 	while (map[i])
