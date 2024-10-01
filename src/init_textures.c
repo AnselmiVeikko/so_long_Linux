@@ -25,9 +25,9 @@ static	mlx_image_t	*load_texture(mlx_t *mlx, const char *path)
 
 void	init_textures(t_game *game)
 {
-	game->wall = load_texture(game->mlx, "assets/Wall.png");
-	game->exit = load_texture(game->mlx, "assets/Exit.png");
-	game->floor = load_texture(game->mlx, "assets/Floor.png");
-	game->player = load_texture(game->mlx, "assets/Player.png");
-	game->collectible = load_texture(game->mlx, "assets/Collectible.png");
+	game->wall = load_texture(game->mlx, "textures/Wall.png");
+	game->exit = load_texture(game->mlx, "textures/Exit.png");
+	game->floor = load_texture(game->mlx, "textures/Floor.png");
+	game->player = load_texture(game->mlx, "textures/Player.png");
+	game->collectible = load_texture(game->mlx, "textures/Collectible.png");
 }
