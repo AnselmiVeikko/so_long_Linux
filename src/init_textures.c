@@ -14,13 +14,13 @@
 
 static	mlx_image_t	*load_texture(mlx_t *mlx, const char *path)
 {
-	mlx_texture_t	*temp;
-	mlx_image_t		*prop;
+	mlx_texture_t	*texture;
+	mlx_image_t		*img;
 
-	temp = mlx_load_png(path);
-	prop = mlx_texture_to_image(mlx, temp);
-	mlx_delete_texture(temp);
-	return (prop);
+	texture = mlx_load_png(path);
+	img = mlx_texture_to_image(mlx, texture);
+	mlx_delete_texture(texture);
+	return (img);
 }
 
 void	init_textures(t_game *game)

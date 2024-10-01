@@ -35,18 +35,22 @@ static	void	check_borders(t_game *game)
 {
 	int	i;
 	int	error;
+	int	y_last;
+	int	x_last;
 
 	i = 0;
 	error = 0;
+	y_last = game->y_size - 1;
+	x_last = game->x_size - 1;
 	while (game->map[i])
 	{
-		if (i == 0 || i == game->y_size - 1)
+		if (i == 0 || i == y_last)
 		{
 			if (ft_notchar(game->map[i], '1'))
 				error = 1;
 		}
 		else if (game->map[i][0] != '1'
-			|| game->map[i][game->x_size - 1] != '1')
+			|| game->map[i][x_last] != '1')
 			error = 1;
 		i++;
 	}
