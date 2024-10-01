@@ -18,7 +18,11 @@ static	mlx_image_t	*load_texture(mlx_t *mlx, const char *path)
 	mlx_image_t		*img;
 
 	texture = mlx_load_png(path);
+	if (!texture)
+		error_exit("Error\nMLX42: texture fail");
 	img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+		error_exit("Error\nMLX42: img fail");
 	mlx_delete_texture(texture);
 	return (img);
 }

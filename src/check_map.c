@@ -85,7 +85,7 @@ static	void	check_win(t_game *game, char *argv)
 	{
 		free_map(game->map);
 		free(game);
-		error_exit("Error\nMap is invalid!");
+		error_exit("Error\nWhat happened to the map?!");
 	}
 	fill_map(map, game->player_y, game->player_x);
 	i = 0;

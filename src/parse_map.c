@@ -19,18 +19,14 @@ char	*parse_map(char	*argv)
 	char	*map_buffer;
 
 	map_buffer = ft_calloc(1, 1);
+	if (!map_buffer)
+		return (NULL);
 	read_map = open(argv, O_RDONLY);
 	if (read_map == -1)
-	{
-		free(map_buffer);
-		return (NULL);
-	}
+		return (free_null(&map_buffer, 0));
 	line = get_next_line(read_map);
 	if (!line)
-	{
-		free(map_buffer);
-		return (NULL);
-	}
+		return (free_null(&map_buffer, 0));
 	while (line)
 	{
 		map_buffer = gnl_strjoin(map_buffer, line);

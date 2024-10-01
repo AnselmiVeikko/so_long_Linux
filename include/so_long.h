@@ -33,7 +33,6 @@ typedef struct s_game
 	int				exit_count;
 	int				player_x;
 	int				player_y;
-	mlx_texture_t	*temp;
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
 	mlx_image_t		*collectible;
