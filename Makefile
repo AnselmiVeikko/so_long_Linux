@@ -1,14 +1,14 @@
 NAME = so_long
 CC = cc
-CFLAGS	:= -Wextra -Wall -Werror -g -Wunreachable-code
-LIBMLX	:= ./lib/MLX42
-MLX_REPO := https://github.com/codam-coding-college/MLX42.git
-LIBFT   := ./lib/libft
-LIBFT_REPO := git@github.com:AnselmiVeikko/Libft.git 
+CFLAGS	= -Wextra -Wall -Werror -g -Wunreachable-code
+LIBMLX	= ./lib/MLX42
+MLX_REPO = https://github.com/codam-coding-college/MLX42.git
+LIBFT   = ./lib/libft
+LIBFT_REPO = git@github.com:AnselmiVeikko/Libft.git 
 
-HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a
-SRCS	:= ./src/utils.c \
+HEADERS	= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT)/include
+LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a
+SRCS	= ./src/utils.c \
 	   ./src/parse_map.c \
 	   ./src/so_long.c \
 	   ./src/init_game.c \
@@ -18,11 +18,11 @@ SRCS	:= ./src/utils.c \
 	   ./src/render_game.c \
 	   ./src/check_map.c \
 
-OBJS	:= ${SRCS:.c=.o}
+OBJS	= ${SRCS:.c=.o}
 
-YELLOW := \033[0;33m
+YELLOW = \033[0;33m
 RED    = \033[0;31m
-NC := \033[0m
+NC = \033[0m
 
 all: libmlx libft $(NAME)
 
