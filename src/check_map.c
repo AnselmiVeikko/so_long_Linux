@@ -45,7 +45,7 @@ static	void	check_borders(t_game *game)
 	while (game->map[i])
 	{
 		if ((i == 0 || i == y_last) && ft_notchar(game->map[i], '1'))
-				error = 1;
+			error = 1;
 		else if (game->map[i][0] != '1' || game->map[i][x_last] != '1')
 			error = 1;
 		i++;
