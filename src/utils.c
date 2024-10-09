@@ -65,9 +65,9 @@ void	close_game(t_game *game)
 	mlx_delete_image(game->mlx, game->floor);
 	mlx_delete_image(game->mlx, game->player);
 	mlx_delete_image(game->mlx, game->collectible);
-	free_map(game->map);
 	mlx_close_window(game->mlx);
 	mlx_terminate(game->mlx);
+	free_map(game->map);
 	free(game);
 	exit (EXIT_SUCCESS);
 }
