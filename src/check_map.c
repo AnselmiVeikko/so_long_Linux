@@ -25,8 +25,7 @@ static	void	check_props(t_game *game)
 		error = 1;
 	if (error == 1)
 	{
-		free_map(game->map);
-		free(game);
+		free_game(game);
 		error_exit("Error\nInvalid amount of props/players!\n");
 	}
 }
@@ -52,8 +51,7 @@ static	void	check_borders(t_game *game)
 	}
 	if (error == 1)
 	{
-		free_map(game->map);
-		free(game);
+		free_game(game);
 		error_exit("Error\nInvalid map borders!\n");
 	}
 }
@@ -67,40 +65,11 @@ static	void	check_shape(t_game *game)
 	{
 		if (ft_strlen(game->map[0]) != ft_strlen(game->map[i]))
 		{
-			free_map(game->map);
-			free (game);
+			free_game(game);
 			error_exit("Error\nMap is not rectangular... seriously?\n");
 		}
 		i++;
 	}
-}
-
-static	void	check_win(t_game *game, char *argv)
-{
-	int		i;
-	char	**map;
-
-	map = split_map(argv);
-	if (!map)
-	{
-		free_map(game->map);
-		free(game);
-		error_exit("Error\nWhat happened to the map?!");
-	}
-	fill_map(map, game->player_y, game->player_x);
-	i = 0;
-	while (map[i])
-	{
-		if (ft_strchr(map[i], 'C') || ft_strchr(map[i], 'E'))
-		{
-			free_map(game->map);
-			free(game);
-			free_map(map);
-			error_exit("Error\nMap is invalid! Props remain after fill!\n");
-		}
-		i++;
-	}
-	free_map (map);
 }
 
 void	check_map(t_game *game, char *argv)
@@ -108,5 +77,6 @@ void	check_map(t_game *game, char *argv)
 	check_shape(game);
 	check_borders(game);
 	check_props(game);
-	check_win(game, argv);
+	check_fill_collectibles(game, argv);
+	check_fill_exit(game, argv);
 }

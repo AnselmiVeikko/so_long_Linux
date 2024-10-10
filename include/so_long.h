@@ -53,6 +53,7 @@ int		count_prop(char **map, char c);
 t_game	*init_game(char *argv);
 
 void	init_textures(t_game *game);
+void	render_tile(t_game *game, mlx_image_t *img, int y, int x);
 void	render_map(t_game *game);
 
 void	key_comms(mlx_key_data_t paramkey, t_game *game);
@@ -60,7 +61,10 @@ void	key_comms(mlx_key_data_t paramkey, t_game *game);
 int		ft_notchar(char *str, char c);
 void	error_exit(char *str);
 void	free_map(char **map);
+void	free_game(t_game *game);
 void	close_game(t_game *game);
-void	fill_map(char **map, int x, int y);
+
+void	check_fill_collectibles(t_game *game, char *argv);
+void	check_fill_exit(t_game *game, char *argv);
 
 #endif

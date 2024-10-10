@@ -12,6 +12,21 @@
 
 #include "../include/so_long.h"
 
+static	void	draw_move(t_game *game, int move_y, int move_x)
+{
+	int	plr_y;
+	int	plr_x;
+
+	plr_y = game->player_y;
+	plr_x = game->player_x;
+	game->map[move_y][move_x] = 'P';
+	game->map[plr_y][plr_x] = '0';
+	render_tile(game, game->player, move_y, move_x);
+	mlx_image_to_window(game->mlx, game->floor, plr_x * TILE, plr_y * TILE);
+	game->player_y = move_y;
+	game->player_x = move_x;
+}
+
 static	void	move_player(t_game *game, int move_y, int move_x)
 {
 	if ((game->map[move_y][move_x] != '1')
@@ -23,11 +38,9 @@ static	void	move_player(t_game *game, int move_y, int move_x)
 		if (game->map[move_y][move_x] == 'E'
 				&& game->collect_count == 0)
 			close_game(game);
-		game->map[move_y][move_x] = 'P';
-		game->map[game->player_y][game->player_x] = '0';
+		draw_move(game, move_y, move_x);
 		game->move_counter++;
 		ft_printf("[MOVES]:%d\n", game->move_counter);
-		render_map(game);
 	}
 }
 

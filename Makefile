@@ -17,6 +17,7 @@ SRCS	= ./src/utils.c \
 	   ./src/mlx_hooks.c \
 	   ./src/render_game.c \
 	   ./src/check_map.c \
+	   ./src/flood_fill.c \
 
 OBJS	= ${SRCS:.c=.o}
 

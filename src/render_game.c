@@ -12,15 +12,10 @@
 
 #include "../include/so_long.h"
 
-static	void	render_tile(t_game *game, mlx_image_t *img, int y, int x)
+void	render_tile(t_game *game, mlx_image_t *img, int y, int x)
 {
 	mlx_image_to_window(game->mlx, game->floor, x * TILE, y * TILE);
 	mlx_image_to_window(game->mlx, img, x * TILE, y * TILE);
-	if (img == game->player)
-	{
-		game->player_y = y;
-		game->player_x = x;
-	}
 }
 
 void	render_map(t_game *game)

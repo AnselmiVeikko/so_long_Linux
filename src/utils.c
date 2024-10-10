@@ -33,6 +33,12 @@ void	free_map(char **map)
 	free (map);
 }
 
+void	free_game(t_game *game)
+{
+	free_map(game->map);
+	free(game);
+}
+
 int	ft_notchar(char *str, char c)
 {
 	int	i;
@@ -45,17 +51,6 @@ int	ft_notchar(char *str, char c)
 		i++;
 	}
 	return (0);
-}
-
-void	fill_map(char **map, int y, int x)
-{
-	if (map[y][x] == '1' || map[y][x] == 'X')
-		return ;
-	map[y][x] = 'X';
-	fill_map(map, y - 1, x);
-	fill_map(map, y + 1, x);
-	fill_map(map, y, x - 1);
-	fill_map(map, y, x + 1);
 }
 
 void	close_game(t_game *game)
